@@ -24,3 +24,9 @@
 ## 4. commit cases
     1. 버그를 고쳐야 할 때 : fix를 앞에 붙이기. ex) fix: click evt null ref except.
     2. 중간 피쳐 개발 시 : feat를 앞에 붙이기. ex) feat: user move. 
+
+## 5. 개발 분야
+- 전희준: 플레이어, UI
+- 전준: 타워(빙의)
+- 주보성: 몬스터, 필드(라이트 포함)
+- 남은 분야: 사운드
