@@ -28,7 +28,7 @@ public class TowerUIManager : MonoBehaviour
     }
 
     // 鸥况 积己 窃荐
-    public void OnCreateTower()
+    public void OnCreateTower(InputAction.CallbackContext context)
     {
         // TODO : 鸥况 积己 内靛 累己
         Debug.Log("鸥况 积己!");
