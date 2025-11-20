@@ -1,7 +1,5 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
 public class MonsterObject : MonoBehaviour
 {
@@ -30,11 +28,12 @@ public class MonsterObject : MonoBehaviour
     [SerializeField] private Transform moveTarget;
     public Transform MoveTarget { get => moveTarget; set => moveTarget = value; }
 
-    public NavMeshAgent navMeshAgent;
+    public NavMeshAgent agent;
 
     private void SetMonsterData()
     {
         Monster monster = MonsterManager.Instance.monsterData.GetMonsterByKey(MonsterKey);
+
         if (monster != null)
         {
             speed = monster.Speed;
@@ -43,8 +42,8 @@ public class MonsterObject : MonoBehaviour
             reward = monster.Reward;
             monsterName = monster.Name;
 
-            navMeshAgent.speed = speed;
-            navMeshAgent.SetDestination(moveTarget.position);
+            agent.speed = speed;
+            agent.SetDestination(moveTarget.position);
         }
         else
         {
@@ -76,5 +75,13 @@ public class MonsterObject : MonoBehaviour
         gameObject.SetActive(false);
         MonsterManager.Instance.Monsters.Remove(this);
         MonsterManager.Instance.EnqueueMonster(this);
+    }
+
+    private void FixedUpdate()
+    {
+        if (agent.stoppingDistance <= agent.remainingDistance)
+        {
+            MonsterManager.Instance.GetNextTarget(moveTarget);
+        }
     }
 }

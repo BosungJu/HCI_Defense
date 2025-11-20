@@ -9,7 +9,7 @@ public class MonsterManager : Singleton<MonsterManager>
     public MonsterWaveData monsterWaveData;
     public Transform monsterPrefab;
     public Transform spawnPoint;
-    public Transform targetPoint;
+    public List<Transform> targetPoint;
     public float waveEndTimeInterval;
     public Action waveEndEvent;
 
@@ -48,7 +48,7 @@ public class MonsterManager : Singleton<MonsterManager>
         }
 
         monster.gameObject.SetActive(true);
-        monster.MoveTarget = targetPoint;
+        monster.MoveTarget = targetPoint[0];
         monster.MonsterKey = monsterKey;
         monster.transform.position = spawnPoint.position;
         Monsters.Add(monster);
@@ -93,6 +93,14 @@ public class MonsterManager : Singleton<MonsterManager>
 
         waveEndEvent?.Invoke();
         CurrentWave += 1;
+    }
+
+    public Transform GetNextTarget(Transform t)
+    {
+        int nextPos = targetPoint.IndexOf(t);
+        nextPos = nextPos + 1 >= targetPoint.Count ? 0 : nextPos + 1;
+
+        return targetPoint[nextPos];
     }
 
     /// <summary>
