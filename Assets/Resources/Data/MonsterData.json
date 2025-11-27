@@ -1,0 +1,30 @@
+[
+    {
+        "key": 1,
+        "speed": 0.5,
+        "health": 10,
+        "reward": 5,
+        "name": "one"
+    },
+    {
+        "key": 2,
+        "speed": 1,
+        "health": 15,
+        "reward": 10,
+        "name": "two"
+    },
+    {
+        "key": 10,
+        "speed": 0.1,
+        "health": 350,
+        "reward": 120,
+        "name": "mini_boss"
+    },
+    {
+        "key": 11,
+        "speed": 0.1,
+        "health": 3000,
+        "reward": 1000,
+        "name": "boss"
+    }
+]
