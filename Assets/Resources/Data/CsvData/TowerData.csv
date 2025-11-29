@@ -1,0 +1,17 @@
+key,name,damage,attackSpeed,sellPrice,towerType,fantasyType,towerTier
+200,Slingshot,12,1.1,40,Medieval,None,1
+201,Longbow,22,1.3,80,Medieval,None,2
+202,Crossbow,35,1.5,120,Medieval,None,3
+203,Ballista,55,1.1,180,Medieval,None,4
+204,Pistol,25,1.4,50,Modern,None,1
+205,Rifle,45,1.6,90,Modern,None,2
+206,Machine Gun,20,6.0,140,Modern,None,3
+207,RPG,120,0.7,200,Modern,None,4
+208,Fire Wizard,18,1.2,70,Fantasy,Fire,1
+209,Fire Wizard,28,1.2,100,Fantasy,Fire,2
+210,Fire Wizard,38,1.25,150,Fantasy,Fire,3
+211,Fire Wizard,48,1.3,200,Fantasy,Fire,4
+212,Ice Wizard,10,1.1,60,Fantasy,Ice,1
+213,Ice Wizard,12,1.1,90,Fantasy,Ice,2
+214,Ice Wizard,15,1.15,130,Fantasy,Ice,3
+215,Ice Wizard,18,1.2,180,Fantasy,Ice,4

@@ -1,0 +1,165 @@
+[
+    {
+        "key": 200,
+        "name": "Slingshot",
+        "damage": 12,
+        "attackSpeed": 1.1,
+        "sellPrice": 40,
+        "towerType": "Medieval",
+        "fantasyType": "None",
+        "towerTier": 1
+    },
+    {
+        "key": 201,
+        "name": "Longbow",
+        "damage": 22,
+        "attackSpeed": 1.3,
+        "sellPrice": 80,
+        "towerType": "Medieval",
+        "fantasyType": "None",
+        "towerTier": 2
+    },
+    {
+        "key": 202,
+        "name": "Crossbow",
+        "damage": 35,
+        "attackSpeed": 1.5,
+        "sellPrice": 120,
+        "towerType": "Medieval",
+        "fantasyType": "None",
+        "towerTier": 3
+    },
+    {
+        "key": 203,
+        "name": "Ballista",
+        "damage": 55,
+        "attackSpeed": 1.1,
+        "sellPrice": 180,
+        "towerType": "Medieval",
+        "fantasyType": "None",
+        "towerTier": 4
+    },
+
+    {
+        "key": 204,
+        "name": "Pistol",
+        "damage": 25,
+        "attackSpeed": 1.4,
+        "sellPrice": 50,
+        "towerType": "Modern",
+        "fantasyType": "None",
+        "towerTier": 1
+    },
+    {
+        "key": 205,
+        "name": "Rifle",
+        "damage": 45,
+        "attackSpeed": 1.6,
+        "sellPrice": 90,
+        "towerType": "Modern",
+        "fantasyType": "None",
+        "towerTier": 2
+    },
+    {
+        "key": 206,
+        "name": "Machine Gun",
+        "damage": 20,
+        "attackSpeed": 6.0,
+        "sellPrice": 140,
+        "towerType": "Modern",
+        "fantasyType": "None",
+        "towerTier": 3
+    },
+    {
+        "key": 207,
+        "name": "RPG",
+        "damage": 120,
+        "attackSpeed": 0.7,
+        "sellPrice": 200,
+        "towerType": "Modern",
+        "fantasyType": "None",
+        "towerTier": 4
+    },
+
+    {
+        "key": 208,
+        "name": "Fire Wizard",
+        "damage": 18,
+        "attackSpeed": 1.2,
+        "sellPrice": 70,
+        "towerType": "Fantasy",
+        "fantasyType": "Fire",
+        "towerTier": 1
+    },
+    {
+        "key": 209,
+        "name": "Fire Wizard",
+        "damage": 28,
+        "attackSpeed": 1.2,
+        "sellPrice": 100,
+        "towerType": "Fantasy",
+        "fantasyType": "Fire",
+        "towerTier": 2
+    },
+    {
+        "key": 210,
+        "name": "Fire Wizard",
+        "damage": 38,
+        "attackSpeed": 1.25,
+        "sellPrice": 150,
+        "towerType": "Fantasy",
+        "fantasyType": "Fire",
+        "towerTier": 3
+    },
+    {
+        "key": 211,
+        "name": "Fire Wizard",
+        "damage": 48,
+        "attackSpeed": 1.3,
+        "sellPrice": 200,
+        "towerType": "Fantasy",
+        "fantasyType": "Fire",
+        "towerTier": 4
+    },
+
+    {
+        "key": 212,
+        "name": "Ice Wizard",
+        "damage": 10,
+        "attackSpeed": 1.1,
+        "sellPrice": 60,
+        "towerType": "Fantasy",
+        "fantasyType": "Ice",
+        "towerTier": 1
+    },
+    {
+        "key": 213,
+        "name": "Ice Wizard",
+        "damage": 12,
+        "attackSpeed": 1.1,
+        "sellPrice": 90,
+        "towerType": "Fantasy",
+        "fantasyType": "Ice",
+        "towerTier": 2
+    },
+    {
+        "key": 214,
+        "name": "Ice Wizard",
+        "damage": 15,
+        "attackSpeed": 1.15,
+        "sellPrice": 130,
+        "towerType": "Fantasy",
+        "fantasyType": "Ice",
+        "towerTier": 3
+    },
+    {
+        "key": 215,
+        "name": "Ice Wizard",
+        "damage": 18,
+        "attackSpeed": 1.2,
+        "sellPrice": 180,
+        "towerType": "Fantasy",
+        "fantasyType": "Ice",
+        "towerTier": 4
+    }
+]

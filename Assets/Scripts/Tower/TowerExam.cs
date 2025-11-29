@@ -16,6 +16,6 @@ public class TowerExam : MonoBehaviour
 
         List<Tower> t = rayHits.Where(r => r.collider.TryGetComponent<Tower>(out var tower)).Select(r => r.collider.GetComponent<Tower>()).ToList();
 
-        t[0].Possession();
+       // t[0].Possession();
     }
 }

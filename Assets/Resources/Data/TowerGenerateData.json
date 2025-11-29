@@ -1,0 +1,12 @@
+[
+	{
+		"key": 300,
+		"medievalRate": 0.4,
+		"modernRate": 0.4,
+		"fantasyRate": 0.2,
+		"tier1Rate": 0.75,
+		"tier2Rate": 0.2,
+		"tier3Rate": 0.04,
+		"tier4Rate": 0.01
+	}
+]
