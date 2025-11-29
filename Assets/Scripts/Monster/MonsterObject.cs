@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,6 +30,10 @@ public class MonsterObject : MonoBehaviour
 
     [SerializeField] private Transform moveTarget;
     public Transform MoveTarget { get => moveTarget; set => moveTarget = value; }
+    [SerializeField] private Dictionary<int, float> burnDamage = new Dictionary<int, float>();
+    public Dictionary<int, float> BurnDamage => burnDamage;
+    [SerializeField] private float slowDuration;
+    public float SlowDuration => slowDuration;
 
     public NavMeshAgent agent;
 
@@ -44,6 +51,8 @@ public class MonsterObject : MonoBehaviour
 
             agent.speed = speed;
             agent.SetDestination(moveTarget.position);
+
+            StartCoroutine(BurnMonster());
         }
         else
         {
@@ -56,9 +65,25 @@ public class MonsterObject : MonoBehaviour
     /// 몬스터가 데미지를 입을 때.
     /// </summary>
     /// <param name="damage"></param>
-    public void DamagedMonster(int damage)
+    public void DamagedMonster(int damage, int burnDamage = 0, float debuffDuration = 0)
     {
         health -= damage;
+
+        if (burnDamage == 0) // slow
+        {
+            slowDuration = debuffDuration;
+        }
+        else // burn
+        {
+            if (BurnDamage.ContainsKey(burnDamage))
+            {
+                BurnDamage[burnDamage] = debuffDuration;
+            }
+            else
+            {
+                this.burnDamage.Add(burnDamage, debuffDuration);
+            }
+        }
 
         if (health <= 0)
         {
@@ -75,6 +100,52 @@ public class MonsterObject : MonoBehaviour
         gameObject.SetActive(false);
         MonsterManager.Instance.Monsters.Remove(this);
         MonsterManager.Instance.EnqueueMonster(this);
+    }
+
+    private void Update() 
+    {
+        if (slowDuration > 0)
+        {
+            slowDuration -= Time.deltaTime;
+            if (slowDuration <= 0)
+            {
+                agent.speed = speed;
+            }
+            else
+            {
+                agent.speed = speed / 2;
+            }
+        }
+    }
+
+    private IEnumerator BurnMonster()
+    {
+        float elapsed = 0f;
+
+        while (true)
+        {
+            int maxDamage = 0;
+
+            foreach (var burn in burnDamage)
+            {
+                if (burn.Value > 0)
+                {
+                    if (burn.Key > maxDamage)
+                    {
+                        maxDamage = burn.Key;
+                    }
+
+                    burnDamage[burn.Key] -= 1f;
+                }
+                else
+                {
+                    burnDamage.Remove(burn.Key);
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+            elapsed += 1f;
+        }
     }
 
     private void FixedUpdate()
