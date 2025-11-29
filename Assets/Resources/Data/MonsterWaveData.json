@@ -1,44 +1,38 @@
-[
-    {
-        "key": 100,
+{
+    "100" : {
         "wave_number": 1,
         "monster_keys": "{1}",
         "monster_count": 10,
         "spawn_interval": 0.5
     },
-    {
-        "key": 101,
+    "101" : {
         "wave_number": 2,
         "monster_keys": "{1/2}",
         "monster_count": 15,
         "spawn_interval": 0.5
     },
-    {
-        "key": 102,
+    "102" : {
         "wave_number": 3,
         "monster_keys": "{2}",
         "monster_count": 25,
         "spawn_interval": 0.5
     },
-    {
-        "key": 103,
+    "103" : {
         "wave_number": 4,
         "monster_keys": "{2/3}",
         "monster_count": 15,
         "spawn_interval": 0.5
     },
-    {
-        "key": 104,
+    "104" : {
         "wave_number": 5,
         "monster_keys": "{10}",
         "monster_count": 2,
         "spawn_interval": 10
     },
-    {
-        "key": 105,
+    "105" : {
         "wave_number": 6,
         "monster_keys": "{3/4}",
         "monster_count": 15,
         "spawn_interval": 0.5
     }
-]
+}
