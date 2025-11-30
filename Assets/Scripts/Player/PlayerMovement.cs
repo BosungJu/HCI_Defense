@@ -1,19 +1,17 @@
 using UnityEngine;
-using OVR; // OVRInputÀ» »ç¿ëÇÏ±â À§ÇØ ÇÊ¿äÇÕ´Ï´Ù.
+using OVR;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("ÀÌµ¿ ¼³Á¤")]
-    // [Range(ÃÖ¼Ò°ª, ÃÖ´ë°ª)] ¼Ó¼º Ãß°¡: Inspector¿¡¼­ ½½¶óÀÌ´õ·Î ¹Ì¼¼ Á¶Á¤ °¡´É
-    [Range(1f, 10f)]
-    public float movementSpeed = 3.0f; // ±âº» ¼Óµµ ¼³Á¤ (3.0f´Â ºñ±³Àû ´À¸®°í ¾ÈÀüÇÑ ¼ÓµµÀÔ´Ï´Ù)
+    [Header("ì´ë™ ì„¤ì •")]
+    [Range(0.1f, 10f)]
+    public float movementSpeed = 3.0f; 
 
-    private float fixedYPosition;      // °íÁ¤ÇÒ YÃà ³ôÀÌ º¯¼ö
+    private float fixedYPosition;    
 
     void Start()
     {
-        // 1. ¾À ½ÃÀÛ ½Ã, ÇöÀç ¿ÀºêÁ§Æ®ÀÇ YÃà À§Ä¡¸¦ °íÁ¤ °ªÀ¸·Î ÀúÀåÇÕ´Ï´Ù.
-        //    ÀÌ °ªÀº °ÔÀÓ ³»³» º¯ÇÏÁö ¾Ê½À´Ï´Ù.
+        // ì”¬ ì‹œì‘ì‹œ, í˜„ì¬ ì˜¤ë¸Œì íŠ¸ì˜ Yì¶• ìœ„ì¹˜ ê³ ì • ê°’ìœ¼ë¡œ ì €ì¥ 
         fixedYPosition = transform.position.y;
     }
 
@@ -24,34 +22,31 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleMovement()
     {
-        // 1. ¿ŞÂÊ ÄÁÆ®·Ñ·¯ÀÇ ¾Æ³¯·Î±× ½ºÆ½ ÀÔ·Â °ª (2D º¤ÅÍ)À» °¡Á®¿É´Ï´Ù.
+        // ì•„ë‚ ë¡œê·¸ ìŠ¤í‹± ì…ë ¥ ê°’(2D ë²¡í„°) ê°€ì ¸ì˜´ 
         Vector2 thumbstickInput = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
 
-        // ¾Æ³¯·Î±× ½ºÆ½ ÀÔ·ÂÀÌ °ÅÀÇ ¾øÀ» ¶§´Â °è»êÀ» °Ç³Ê¶İ´Ï´Ù.
+        // ì•„ë‚ ë¡œê·¸ ìŠ¤í‹± ì…ë ¥ì´ ë¯¸ì„¸í•  ë•Œ ê³„ì‚° Skip
         if (thumbstickInput.magnitude < 0.1f)
         {
             return;
         }
 
-        // 2. 3D ÀÌµ¿ º¤ÅÍ »ı¼º (X¿Í ZÃà¸¸ »ç¿ë, YÃàÀº 0À¸·Î ¼³Á¤ÇÏ¿© ¼öÁ÷ ÀÌµ¿ ¹æÁö)
+        // 3D ì´ë™ ë²¡í„° ìƒì„± (Xì™€ Yì¶•ë§Œ ì‚¬ìš©, Yì¶•ì€ 0ìœ¼ë¡œ ì„¤ì •í•˜ì—¬ ìˆ˜ì§ ì´ë™ ë°©ì§€)
         Vector3 localMovementVector = new Vector3(thumbstickInput.x, 0f, thumbstickInput.y);
 
-        // 3. ÄÁÆ®·Ñ·¯ÀÇ ¹æÇâ(Rotation)À» ±âÁØÀ¸·Î ÀÌµ¿ º¤ÅÍ¸¦ ¿ùµå ÁÂÇ¥·Î º¯È¯
-        //    (World ±âÁØÀÌ ¾Æ´Ñ Angle ±âÁØ Ã³¸®)
-        //    ½ºÅ©¸³Æ®°¡ ºÙÀº ¿ÀºêÁ§Æ®(OVRCameraRig)ÀÇ È¸Àü °ªÀ» »ç¿ëÇÕ´Ï´Ù.
+        // í˜„ì¬ ì˜¤ë¸Œì íŠ¸ì˜ Angle ê¸°ì¤€ìœ¼ë¡œ ì´ë™ ë²¡í„°ë¥¼ ì›”ë“œ ì¢Œí‘œë¡œ ë³€í™˜ 
         Quaternion rotation = transform.rotation;
         Vector3 worldMovement = rotation * localMovementVector;
 
-        // **Áß¿ä:** È¸Àü º¯È¯ ÈÄ YÃàÀÌ ¹Ì¼¼ÇÏ°Ô º¯°æµÉ ¼ö ÀÖÀ¸¹Ç·Î ´Ù½Ã 0À¸·Î ¼³Á¤ÇÕ´Ï´Ù.
+        // Yì¶• ê³ ì • 
         worldMovement.y = 0f;
 
-        // 4. ½ÇÁ¦·Î ÀÌµ¿ Àû¿ë
+        // ì‹¤ì œ ì´ë™ 
         transform.position += worldMovement * movementSpeed * Time.deltaTime;
 
-        // 5. YÃà À§Ä¡ °­Á¦ °íÁ¤ (°øÁß Å¾ºä ³ôÀÌ À¯Áö)
-        //    ÀÌµ¿ ÈÄ YÃà À§Ä¡¸¦ Start()¿¡¼­ ÀúÀåÇÑ °ªÀ¸·Î °­Á¦·Î °íÁ¤½ÃÅµ´Ï´Ù.
+        // Yì¶• ê³ ì • 
         Vector3 currentPosition = transform.position;
-        currentPosition.y = fixedYPosition; // ÀúÀåµÈ °íÁ¤ YÃà °ª »ç¿ë
+        currentPosition.y = fixedYPosition; 
         transform.position = currentPosition;
     }
 }
