@@ -6,10 +6,10 @@ using UnityEngine;
 public class MonsterWave : IDataKey
 {
     [SerializeField] private int key;
-    [JsonProperty("waveNumber")][SerializeField] private int waveNumber;
-    [JsonProperty("monsterKeys")][SerializeField] private int monsterKey;
-    [JsonProperty("spawnInterval")][SerializeField] private float spawnInterval;
-    [JsonProperty("monsterCount")][SerializeField] private int monsterCount;
+    [JsonProperty("wave_number")][SerializeField] private int waveNumber;
+    [JsonProperty("monster_keys")][SerializeField] private int monsterKey;
+    [JsonProperty("spawn_interval")][SerializeField] private float spawnInterval;
+    [JsonProperty("monster_count")][SerializeField] private int monsterCount;
 
     public int Key { get => key; set => key = value; }
     public int WaveNumber { get => waveNumber; private set => waveNumber = value; }
