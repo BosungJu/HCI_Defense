@@ -1,10 +1,22 @@
+using System.Collections.Generic;
+using System.Linq;
+using Oculus.Interaction.Input;
 using UnityEngine;
 
 public class TowerObject : MonoBehaviour
 {
     private int towerKey;
     private float attackTimer;
+
     private MonsterObject currentTarget;
+    [SerializeField] private MonsterObject debugTarget; // Debug 보기용
+
+    [Header("Possession Controller")]
+    public Controller controller;
+
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
+    public Transform firePoint;
 
     [Header("Tower Runtime Data")]
     [SerializeField] private int damage;
@@ -24,7 +36,9 @@ public class TowerObject : MonoBehaviour
         }
     }
 
-
+    // --------------------------------------------------
+    //      데이터 초기화
+    // --------------------------------------------------
     private void InitializeTowerData()
     {
         Tower tower = TowerManager.Instance.GetTowerByKey(TowerKey);
@@ -47,7 +61,7 @@ public class TowerObject : MonoBehaviour
 
     private void Update()
     {
-        TowerTarget();
+        UpdateTarget();
         if (currentTarget == null) return;
 
         LookAtTarget();
@@ -55,22 +69,23 @@ public class TowerObject : MonoBehaviour
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0f)
         {
-            TowerAttack();
+            ShootProjectile();
             attackTimer = 1f / attackSpeed;
         }
     }
 
-
-    // ---------------------------------------
-    //    Target Lock-On Logic
-    // ---------------------------------------
-    private void TowerTarget()
+    // --------------------------------------------------
+    // 타겟 갱신 
+    // --------------------------------------------------
+    private void UpdateTarget()
     {
-        // 1) 현재 타겟이 살아 있으면 유지
-        if (currentTarget != null && currentTarget.gameObject.activeSelf)
+        if (currentTarget != null &&
+            currentTarget.gameObject.activeSelf &&
+            currentTarget.Health > 0)
+        {
             return;
+        }
 
-        // 2) 타겟이 없거나 죽었으면 → 새로운 타겟 검색
         currentTarget = FindClosestMonster();
     }
 
@@ -78,9 +93,7 @@ public class TowerObject : MonoBehaviour
     private MonsterObject FindClosestMonster()
     {
         MonsterObject[] monsters = FindObjectsOfType<MonsterObject>();
-
-        if (monsters.Length == 0)
-            return null;
+        if (monsters.Length == 0) return null;
 
         float closestDist = Mathf.Infinity;
         MonsterObject closest = null;
@@ -100,26 +113,45 @@ public class TowerObject : MonoBehaviour
         return closest;
     }
 
-
-    private void TowerAttack()
+    // --------------------------------------------------
+    // 투사체 발사
+    // --------------------------------------------------
+    private void ShootProjectile()
     {
+        if (!projectilePrefab || !firePoint) return;
         if (currentTarget == null) return;
 
-        currentTarget.TakeDamage(damage);
+        GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        Projectile proj = obj.GetComponent<Projectile>();
 
-        switch (fantasyType)
+        proj.target = currentTarget;
+        proj.damage = damage;
+
+        // 🔥 판타지 타입 설정
+        if (fantasyType == FantasyType.Fire)
         {
-            case FantasyType.Fire:
-                currentTarget.ApplyBurn(damage * 0.2f, 3f);
-                break;
+            proj.isAOE = true;
+            proj.isFire = true;
+            proj.aoeRadius = 2.3f;
+        }
+        else if (fantasyType == FantasyType.Ice)
+        {
+            proj.isAOE = true;
+            proj.isIce = true;
+            proj.aoeRadius = 2.3f;
+        }
 
-            case FantasyType.Ice:
-                currentTarget.ApplySlow(0.4f, 2f);
-                break;
+        // 💥 RPG 타워 (Modern Tier 4)
+        if (towerType == TowerType.Modern && towerTier == 4)
+        {
+            proj.isAOE = true;
+            proj.isRPG = true;
         }
     }
 
-
+    // --------------------------------------------------
+    // 타워 방향 회전
+    // --------------------------------------------------
     private void LookAtTarget()
     {
         if (currentTarget == null) return;
@@ -128,5 +160,37 @@ public class TowerObject : MonoBehaviour
         dir.y = 0;
 
         transform.rotation = Quaternion.LookRotation(dir);
+    }
+
+    // --------------------------------------------------
+    // 플레이어 빙의 기능
+    // --------------------------------------------------
+    public void Possession()
+    {
+        // TODO: 1인칭 조준, 카메라 전환 등
+    }
+
+    // --------------------------------------------------
+    // 빙의 상태에서 컨트롤러로 직접 타겟 지정
+    // --------------------------------------------------
+    private void ShotMonster()
+    {
+        if (controller == null) return;
+
+        RaycastHit[] hits = Physics.RaycastAll(
+            controller.transform.position,
+            controller.transform.forward,
+            100f
+        );
+
+        var found = hits
+            .Where(h => h.collider.TryGetComponent(out MonsterObject _))
+            .Select(h => h.collider.GetComponent<MonsterObject>())
+            .ToList();
+
+        if (found.Count == 0) return;
+
+        debugTarget = found[0];
+        currentTarget = found[0];
     }
 }
