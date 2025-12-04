@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         worldMovement.y = 0f;
 
         // 실제 이동 
-        transform.Translate(localMovementVector);
+        transform.Translate(worldMovement * movementSpeed * Time.deltaTime, Space.World);
 
         // Y축 고정 
         Vector3 currentPosition = transform.position;
