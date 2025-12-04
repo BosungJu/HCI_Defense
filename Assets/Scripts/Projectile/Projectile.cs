@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -119,12 +121,14 @@ public class Projectile : MonoBehaviour
         if (isRPG)
             radius = rpgAoeRadius; // RPG는 좁은 폭발 범위
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, radius);
+        List<MonsterObject> monsters = MonsterManager
+            .Instance.Monsters.Where(m =>
+                Vector3.Distance(m.transform.position, target.transform.position) <= radius
+            )
+            .ToList();
 
-        foreach (var h in hits)
+        foreach (var m in monsters)
         {
-            if (!h.TryGetComponent(out MonsterObject m)) continue;
-
             if (isRPG)
             {
                 // RPG 폭발 = 매우 강한 순간 폭딜
