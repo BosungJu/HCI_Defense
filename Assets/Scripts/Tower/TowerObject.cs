@@ -92,13 +92,10 @@ public class TowerObject : MonoBehaviour
 
     private MonsterObject FindClosestMonster()
     {
-        MonsterObject[] monsters = FindObjectsOfType<MonsterObject>();
-        if (monsters.Length == 0) return null;
+        float closestDist = Vector3.Distance(transform.position, MonsterManager.Instance.Monsters[0].transform.position);
+        MonsterObject closest = MonsterManager.Instance.Monsters[0];
 
-        float closestDist = Mathf.Infinity;
-        MonsterObject closest = null;
-
-        foreach (var m in monsters)
+        foreach (var m in MonsterManager.Instance.Monsters)
         {
             if (!m.gameObject.activeSelf) continue;
 
