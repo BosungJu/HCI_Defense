@@ -1,26 +1,58 @@
 {
     "1" : {
         "speed": 0.5,
-        "health": 10,
+        "health": 15,
+        "damage": 5,
         "reward": 5,
-        "name": "one"
+        "name": "golem"
     },
     "2" : {
         "speed": 1,
-        "health": 15,
+        "health": 10,
+        "damage": 10,
         "reward": 10,
-        "name": "two"
+        "name": "bear"
+    },
+    "3" : {
+        "speed": 0.5,
+        "health": 30,
+        "damage": 15,
+        "reward": 15,
+        "name": "golem"
+    },
+    "4" : {
+        "speed": 1,
+        "health": 20,
+        "damage": 10,
+        "reward": 20,
+        "name": "bear"
+    },
+    "5" : {
+        "speed": 0.5,
+        "health": 50,
+        "damage": 15,
+        "reward": 25,
+        "name": "golem"
+    },
+    "6" : {
+        "speed": 1,
+        "health": 35,
+        "damage": 10,
+        "reward": 30,
+        "name": "bear"
     },
     "10": {
         "speed": 0.1,
         "health": 350,
+        "damage": 100,
         "reward": 120,
-        "name": "mini_boss"
+        "name": "bear"
     },
     "11": {
         "speed": 0.1,
         "health": 3000,
+        "damage": 100,
         "reward": 1000,
-        "name": "boss"
+        "name": "golem"
     }
 }
