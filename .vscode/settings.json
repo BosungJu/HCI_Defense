@@ -66,5 +66,8 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
-    "dotnet.defaultSolution": "HCI_Defense.sln"
+    "dotnet.defaultSolution": "HCI_Defense.sln",
+    "vscode-pets.throwBallWithMouse": true,
+    "vscode-pets.theme": "winter",
+    "vscode-pets.petSize": "nano"
 }
