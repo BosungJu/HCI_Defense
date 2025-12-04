@@ -4,7 +4,6 @@ using OVR;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("이동 설정")]
-    [Range(0.1f, 10f)]
     public float movementSpeed = 3.0f; 
 
     private float fixedYPosition;    
@@ -42,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         worldMovement.y = 0f;
 
         // 실제 이동 
-        transform.position += worldMovement * movementSpeed * Time.deltaTime;
+        transform.Translate(worldMovement * movementSpeed * Time.deltaTime, Space.World);
 
         // Y축 고정 
         Vector3 currentPosition = transform.position;
