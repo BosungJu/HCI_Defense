@@ -4,7 +4,7 @@
         "health": 15,
         "damage": 5,
         "reward": 5,
-        "name": "golem"
+        "name": "mutant"
     },
     "2" : {
         "speed": 1,
@@ -18,7 +18,7 @@
         "health": 30,
         "damage": 15,
         "reward": 15,
-        "name": "golem"
+        "name": "mutant"
     },
     "4" : {
         "speed": 1,
@@ -32,7 +32,7 @@
         "health": 50,
         "damage": 15,
         "reward": 25,
-        "name": "golem"
+        "name": "mutant"
     },
     "6" : {
         "speed": 1,
@@ -53,6 +53,6 @@
         "health": 3000,
         "damage": 100,
         "reward": 1000,
-        "name": "golem"
+        "name": "mutant"
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MonsterManager : Singleton<MonsterManager>
 {
@@ -28,8 +29,8 @@ public class MonsterManager : Singleton<MonsterManager>
     /// <summary>
     /// 몬스터 오브젝트 풀.
     /// </summary>
-    private Queue<MonsterObject> monsterQueue = new Queue<MonsterObject>();
-    public List<MonsterObject> Monsters => new List<MonsterObject>(monsterQueue);
+    // private Queue<MonsterObject> monsterQueue = new Queue<MonsterObject>();
+    public List<MonsterObject> Monsters;
 
     /// <summary>
     /// 오브젝트 풀에서 가져오거나 생성합니다.
@@ -56,10 +57,10 @@ public class MonsterManager : Singleton<MonsterManager>
     /// 몬스터를 오브젝트 풀에 반환합니다.
     /// </summary>
     /// <param name="monster"></param>
-    public void EnqueueMonster(MonsterObject monster)
-    {
-        monsterQueue.Enqueue(monster);
-    }
+    // public void EnqueueMonster(MonsterObject monster)
+    // {
+    //     monsterQueue.Enqueue(monster);
+    // }
 
     /// <summary>
     /// 웨이브 시작
@@ -115,6 +116,7 @@ public class MonsterManager : Singleton<MonsterManager>
     /// </summary>
     private void Init()
     {
+        Monsters = new List<MonsterObject>();
         monsterData?.LoadData();
         monsterWaveData?.LoadData();
     }

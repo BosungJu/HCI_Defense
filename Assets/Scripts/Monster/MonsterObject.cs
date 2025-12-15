@@ -102,7 +102,7 @@ public class MonsterObject : MonoBehaviour
         // TODO 플레이어에게 돈 지급.
         gameObject.SetActive(false);
         MonsterManager.Instance.Monsters.Remove(this);
-        MonsterManager.Instance.EnqueueMonster(this);
+        // MonsterManager.Instance.EnqueueMonster(this);
     }
 
     private void Update() 

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 17712994}
   - component: {fileID: 17712993}
   - component: {fileID: 17712997}
+  - component: {fileID: 17712998}
   m_Layer: 0
   m_Name: TowerSector13
   m_TagString: Untagged
@@ -240,6 +241,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &17712998
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17712992}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &66417912
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,6 +531,7 @@ GameObject:
   - component: {fileID: 280613040}
   - component: {fileID: 280613039}
   - component: {fileID: 280613043}
+  - component: {fileID: 280613044}
   m_Layer: 0
   m_Name: TowerSector24
   m_TagString: Untagged
@@ -622,6 +640,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &280613044
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280613038}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &290732724
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +746,7 @@ GameObject:
   - component: {fileID: 295265566}
   - component: {fileID: 295265565}
   - component: {fileID: 295265569}
+  - component: {fileID: 295265570}
   m_Layer: 0
   m_Name: TowerSector16
   m_TagString: Untagged
@@ -820,6 +855,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &295265570
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295265564}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &378437230
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +915,7 @@ GameObject:
   - component: {fileID: 399883212}
   - component: {fileID: 399883211}
   - component: {fileID: 399883215}
+  - component: {fileID: 399883216}
   m_Layer: 0
   m_Name: TowerSector17
   m_TagString: Untagged
@@ -972,6 +1024,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &399883216
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399883210}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &404319669
 GameObject:
   m_ObjectHideFlags: 0
@@ -985,6 +1053,7 @@ GameObject:
   - component: {fileID: 404319671}
   - component: {fileID: 404319670}
   - component: {fileID: 404319674}
+  - component: {fileID: 404319675}
   m_Layer: 0
   m_Name: TowerSector23
   m_TagString: Untagged
@@ -1093,6 +1162,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &404319675
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404319669}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &499038983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1191,7 @@ GameObject:
   - component: {fileID: 499038985}
   - component: {fileID: 499038984}
   - component: {fileID: 499038988}
+  - component: {fileID: 499038989}
   m_Layer: 0
   m_Name: TowerSector5
   m_TagString: Untagged
@@ -1214,6 +1300,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &499038989
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499038983}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &521368361
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1475,6 +1577,7 @@ GameObject:
   - component: {fileID: 580771561}
   - component: {fileID: 580771560}
   - component: {fileID: 580771564}
+  - component: {fileID: 580771565}
   m_Layer: 0
   m_Name: TowerSector21
   m_TagString: Untagged
@@ -1583,6 +1686,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &580771565
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 580771559}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &581881332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,8 +1921,8 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 64
-  m_UseGeometry: 0
+    m_Bits: 4294967295
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -1813,7 +1932,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 321a43edbb5268d40a749885ff2846dd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b64eaa7eec1d5e24f817b130f8fa367f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &677699834
 GameObject:
@@ -1907,6 +2026,7 @@ GameObject:
   - component: {fileID: 694920839}
   - component: {fileID: 694920838}
   - component: {fileID: 694920842}
+  - component: {fileID: 694920843}
   m_Layer: 0
   m_Name: TowerSector22
   m_TagString: Untagged
@@ -2015,6 +2135,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &694920843
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694920837}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &794355781
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,6 +2164,7 @@ GameObject:
   - component: {fileID: 794355783}
   - component: {fileID: 794355782}
   - component: {fileID: 794355786}
+  - component: {fileID: 794355787}
   m_Layer: 0
   m_Name: TowerSector19
   m_TagString: Untagged
@@ -2136,6 +2273,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &794355787
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794355781}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &902999812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2258,6 +2411,7 @@ GameObject:
   - component: {fileID: 960438847}
   - component: {fileID: 960438846}
   - component: {fileID: 960438850}
+  - component: {fileID: 960438851}
   m_Layer: 0
   m_Name: TowerSector10
   m_TagString: Untagged
@@ -2366,6 +2520,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &960438851
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960438845}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &965163365
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,6 +2549,7 @@ GameObject:
   - component: {fileID: 965163367}
   - component: {fileID: 965163366}
   - component: {fileID: 965163370}
+  - component: {fileID: 965163371}
   m_Layer: 0
   m_Name: TowerSector6
   m_TagString: Untagged
@@ -2487,6 +2658,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &965163371
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965163365}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &988976665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2500,6 +2687,7 @@ GameObject:
   - component: {fileID: 988976667}
   - component: {fileID: 988976666}
   - component: {fileID: 988976670}
+  - component: {fileID: 988976671}
   m_Layer: 0
   m_Name: TowerSector8
   m_TagString: Untagged
@@ -2608,6 +2796,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &988976671
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988976665}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &992945557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2652,6 +2856,7 @@ GameObject:
   - component: {fileID: 1002414136}
   - component: {fileID: 1002414135}
   - component: {fileID: 1002414139}
+  - component: {fileID: 1002414140}
   m_Layer: 0
   m_Name: TowerSector14
   m_TagString: Untagged
@@ -2760,6 +2965,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1002414140
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002414134}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1081327765
 GameObject:
   m_ObjectHideFlags: 0
@@ -2969,6 +3190,7 @@ GameObject:
   - component: {fileID: 1205309894}
   - component: {fileID: 1205309893}
   - component: {fileID: 1205309897}
+  - component: {fileID: 1205309898}
   m_Layer: 0
   m_Name: TowerSector4
   m_TagString: Untagged
@@ -3077,6 +3299,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1205309898
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205309892}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1217770620
 GameObject:
   m_ObjectHideFlags: 0
@@ -3121,6 +3359,7 @@ GameObject:
   - component: {fileID: 1257850687}
   - component: {fileID: 1257850686}
   - component: {fileID: 1257850690}
+  - component: {fileID: 1257850691}
   m_Layer: 0
   m_Name: TowerSector9
   m_TagString: Untagged
@@ -3229,6 +3468,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1257850691
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257850685}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1266478191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,6 +3497,7 @@ GameObject:
   - component: {fileID: 1266478194}
   - component: {fileID: 1266478193}
   - component: {fileID: 1266478196}
+  - component: {fileID: 1266478197}
   m_Layer: 0
   m_Name: TowerSector1
   m_TagString: Untagged
@@ -3350,6 +3606,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1266478197
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266478191}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1273284116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3363,6 +3635,7 @@ GameObject:
   - component: {fileID: 1273284118}
   - component: {fileID: 1273284117}
   - component: {fileID: 1273284121}
+  - component: {fileID: 1273284122}
   m_Layer: 0
   m_Name: TowerSector2
   m_TagString: Untagged
@@ -3471,6 +3744,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1273284122
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273284116}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1276845180
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,6 +3868,7 @@ GameObject:
   - component: {fileID: 1413216465}
   - component: {fileID: 1413216464}
   - component: {fileID: 1413216468}
+  - component: {fileID: 1413216469}
   m_Layer: 0
   m_Name: TowerSector25
   m_TagString: Untagged
@@ -3687,6 +3977,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1413216469
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413216463}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1444155352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3766,7 +4072,7 @@ MonoBehaviour:
   monsterWaveData: {fileID: 11400000, guid: 249fa0b7075b28e428b16e064b308b10, type: 2}
   monsterPrefab:
   - {fileID: 3312499663655723257, guid: 9de67dd96c89e684e8e4308f20458726, type: 3}
-  - {fileID: -8679921383154817045, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+  - {fileID: 4493453710633478013, guid: 96e589c639d8e9c4c8e0d66bf13c433a, type: 3}
   spawnPoint: {fileID: 1444155353}
   targetPoint:
   - {fileID: 581881333}
@@ -3774,6 +4080,7 @@ MonoBehaviour:
   - {fileID: 1412161248}
   - {fileID: 1444155353}
   waveEndTimeInterval: 60
+  Monsters: []
 --- !u!1 &1533371352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,6 +4094,7 @@ GameObject:
   - component: {fileID: 1533371354}
   - component: {fileID: 1533371353}
   - component: {fileID: 1533371357}
+  - component: {fileID: 1533371358}
   m_Layer: 0
   m_Name: TowerSector12
   m_TagString: Untagged
@@ -3895,6 +4203,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1533371358
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533371352}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1534274725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +4232,7 @@ GameObject:
   - component: {fileID: 1534274727}
   - component: {fileID: 1534274726}
   - component: {fileID: 1534274730}
+  - component: {fileID: 1534274731}
   m_Layer: 0
   m_Name: TowerSector18
   m_TagString: Untagged
@@ -4016,6 +4341,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1534274731
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534274725}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1814536634
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,6 +4370,7 @@ GameObject:
   - component: {fileID: 1814536636}
   - component: {fileID: 1814536635}
   - component: {fileID: 1814536639}
+  - component: {fileID: 1814536640}
   m_Layer: 0
   m_Name: TowerSector3
   m_TagString: Untagged
@@ -4137,6 +4479,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &1814536640
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814536634}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1885585686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4470,6 +4828,7 @@ GameObject:
   - component: {fileID: 2045366961}
   - component: {fileID: 2045366960}
   - component: {fileID: 2045366964}
+  - component: {fileID: 2045366965}
   m_Layer: 0
   m_Name: TowerSector7
   m_TagString: Untagged
@@ -4578,6 +4937,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &2045366965
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045366959}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2045492650
 GameObject:
   m_ObjectHideFlags: 0
@@ -4591,6 +4966,7 @@ GameObject:
   - component: {fileID: 2045492652}
   - component: {fileID: 2045492651}
   - component: {fileID: 2045492655}
+  - component: {fileID: 2045492656}
   m_Layer: 0
   m_Name: TowerSector15
   m_TagString: Untagged
@@ -4699,6 +5075,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &2045492656
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045492650}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2088715962
 GameObject:
   m_ObjectHideFlags: 0
@@ -4712,6 +5104,7 @@ GameObject:
   - component: {fileID: 2088715964}
   - component: {fileID: 2088715963}
   - component: {fileID: 2088715967}
+  - component: {fileID: 2088715968}
   m_Layer: 0
   m_Name: TowerSector20
   m_TagString: Untagged
@@ -4820,6 +5213,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &2088715968
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088715962}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &2111207259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4971,6 +5380,7 @@ GameObject:
   - component: {fileID: 2135393269}
   - component: {fileID: 2135393268}
   - component: {fileID: 2135393272}
+  - component: {fileID: 2135393273}
   m_Layer: 0
   m_Name: TowerSector11
   m_TagString: Untagged
@@ -5079,6 +5489,79 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d351f2207aa475942880518ccf5b18a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!208 &2135393273
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135393267}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!1001 &3087023587640694492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 962843618336720231, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_Name
+      value: ProjectilePrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8470547240275996685, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5a07442b56e7a7141a06a4e807353418, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -5090,3 +5573,4 @@ SceneRoots:
   - {fileID: 1136653873}
   - {fileID: 521368361}
   - {fileID: 1885585690}
+  - {fileID: 3087023587640694492}

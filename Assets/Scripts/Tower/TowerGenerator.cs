@@ -19,6 +19,9 @@ public class TowerGenerator : MonoBehaviour
 
     private void Start()
     {
+        towerRuleData.LoadData();
+        towerData.LoadData();
+
         spawnPoints = FindObjectsByType<TowerSector>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).ToList();
 
         towerRuleData.LoadData();
@@ -45,7 +48,7 @@ public class TowerGenerator : MonoBehaviour
     {
         List<TowerObject> towers = this.towers.Where(t => t != null).ToList();
 
-        int ranIdx = Random.Range(0, towers.Count);
+        int ranIdx = Random.Range(0, towers.Count - 1);
 
         SpawnTower(spawnPoints[ranIdx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), ranIdx);
     }
@@ -120,7 +123,7 @@ public class TowerGenerator : MonoBehaviour
 /// <param name="towerKey">타워 키</param>
     private void SpawnTower(Vector3 position, int towerKey, int idx)
     {
-        GameObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab).gameObject;
+        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, transform).GetComponent<TowerObject>();
 
         if (prefab == null)
         {
@@ -128,11 +131,9 @@ public class TowerGenerator : MonoBehaviour
             return;
         }
 
-        GameObject go = Instantiate(prefab, position, Quaternion.identity);
+        prefab.TowerKey = towerKey;
+        prefab.transform.position = spawnPoints[idx].transform.position;
 
-        TowerObject towerObj = go.GetComponent<TowerObject>();
-        towerObj.TowerKey = towerKey;
-
-        towers[idx] = towerObj;
+        towers[idx] = prefab;
     }
 }
