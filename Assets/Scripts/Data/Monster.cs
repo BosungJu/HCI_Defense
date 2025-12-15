@@ -38,5 +38,6 @@ public class Monster : IDataKey
     public void InitailzedData()
     {
         // TODO animation load
+        Resources.Load<Transform>($"MonsterPrefabs/{Name}");
     }
 }

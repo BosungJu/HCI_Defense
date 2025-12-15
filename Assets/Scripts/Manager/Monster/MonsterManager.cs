@@ -82,17 +82,23 @@ public class MonsterManager : Singleton<MonsterManager>
     private IEnumerator WaveCoroutine(int wave)
     {
         MonsterWave monsterWave = monsterWaveData.GetWaveData(wave);
+        
+        int idx = 0;
 
-        for (int i = 0; i < monsterWave.MonsterCount; i++)
+        foreach (int count in monsterWave.MonsterCounts)
         {
-            GenerateMonster(monsterWave.MonsterKey);
-            yield return new WaitForSeconds(monsterWave.SpawnInterval);
+            for (int i = 0; i < count; ++i)
+            {
+                GenerateMonster(monsterWave.MonsterKey[idx]);
+                yield return new WaitForSeconds(monsterWave.SpawnInterval);
+            }
+            idx += 1;
         }
 
         yield return new WaitForSeconds(waveEndTimeInterval);
 
-        waveEndEvent?.Invoke();
         CurrentWave += 1;
+        waveEndEvent?.Invoke();
     }
 
     public Transform GetNextTarget(Transform t)
