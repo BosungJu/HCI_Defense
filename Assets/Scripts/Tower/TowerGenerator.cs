@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TowerGenerator : MonoBehaviour
@@ -7,7 +8,9 @@ public class TowerGenerator : MonoBehaviour
     [SerializeField] private List<Transform> spawnPoints;
 
     [Header("타워 생성 규칙 (JSON → ScriptableObject)")]
-    [SerializeField] private TowerGenerateData towerRuleData;  
+    [SerializeField] private TowerGenerateData towerRuleData;
+
+    private List<TowerObject> towers = new List<TowerObject>();
 
     private TowerGenerate towerRule;
 
@@ -24,7 +27,10 @@ public class TowerGenerator : MonoBehaviour
             return;
         }
 
-        GenerateTowers();
+        for (int i = 0; i < spawnPoints.Count; ++i)
+        {
+            towers.Add(null);
+        }
     }
 
 
@@ -33,23 +39,13 @@ public class TowerGenerator : MonoBehaviour
 /// <summary>
 /// 랜덤 생성
 /// </summary>
-    private void GenerateTowers()
+    public void GenerateTowers()
     {
-        foreach (Transform point in spawnPoints)
-        {
-            TowerType type = GetRandomTowerType();
-            int tier = GetRandomTier();
+        List<TowerObject> towers = this.towers.Where(t => t != null).ToList();
 
-            int towerKey = FindTowerKey(type, tier);
+        int ranIdx = Random.Range(0, towers.Count);
 
-            if (towerKey == -1)
-            {
-                Debug.LogError($"No tower found for {type} Tier {tier}");
-                continue;
-            }
-
-            SpawnTower(point.position, towerKey);
-        }
+        SpawnTower(spawnPoints[ranIdx].position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), ranIdx);
     }
 
 
@@ -120,7 +116,7 @@ public class TowerGenerator : MonoBehaviour
 /// </summary>
 /// <param name="position">생성 위치</param>
 /// <param name="towerKey">타워 키</param>
-    private void SpawnTower(Vector3 position, int towerKey)
+    private void SpawnTower(Vector3 position, int towerKey, int idx)
     {
         GameObject prefab = TowerManager.Instance.GetTowerPrefab(towerKey);
 
@@ -134,5 +130,7 @@ public class TowerGenerator : MonoBehaviour
 
         TowerObject towerObj = go.GetComponent<TowerObject>();
         towerObj.TowerKey = towerKey;
+
+        towers[idx] = towerObj;
     }
 }

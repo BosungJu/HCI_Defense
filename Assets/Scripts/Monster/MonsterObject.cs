@@ -49,10 +49,13 @@ public class MonsterObject : MonoBehaviour
             reward = monster.Reward;
             monsterName = monster.Name;
 
-            agent.speed = speed;
-            agent.SetDestination(moveTarget.position);
+            agent.Warp(MonsterManager.Instance.targetPoint[0].position);
+            agent.stoppingDistance = 1f;
+            agent.speed = speed * 5;
+            agent.SetDestination(MoveTarget.position);
 
             StartCoroutine(BurnMonster());
+            StartCoroutine(CheckDestination());
         }
         else
         {
@@ -107,14 +110,11 @@ public class MonsterObject : MonoBehaviour
         if (slowDuration > 0)
         {
             slowDuration -= Time.deltaTime;
-            if (slowDuration <= 0)
-            {
-                agent.speed = speed;
-            }
-            else
-            {
-                agent.speed = speed / 2;
-            }
+            agent.speed = speed / 2;
+        }
+        else if (slowDuration <= 0)
+        {
+            agent.speed = speed;
         }
     }
 
@@ -148,11 +148,20 @@ public class MonsterObject : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private IEnumerator CheckDestination()
     {
-        if (agent.stoppingDistance <= agent.remainingDistance)
+        while (true)
         {
-            MonsterManager.Instance.GetNextTarget(moveTarget);
+            if (agent.hasPath)
+            {
+                if (agent.stoppingDistance >= agent.remainingDistance)
+                {
+                    MoveTarget = MonsterManager.Instance.GetNextTarget(MoveTarget);
+                    agent.SetDestination(MoveTarget.position);
+                }
+            }
+
+            yield return new WaitForEndOfFrame();
         }
     }
 }
