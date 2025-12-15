@@ -5,6 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class Tower : IDataKey
 {
+    private const string TowerPrefabPath = "Tower/Prefab";
+    private const string TowerAnimationPath = "Tower/Animation";
+
     [SerializeField] private int key;
     [JsonProperty("name")]        [SerializeField] private string name;
     [JsonProperty("damage")]      [SerializeField] private int damage;
@@ -23,8 +26,11 @@ public class Tower : IDataKey
     public int TowerTier { get => towerTier; private set => towerTier = value; }
     public FantasyType FantasyType { get => fantasyType; private set => fantasyType = value; }
 
-    [SerializeField] private List<Animation> towerPrefab;
-    public List<Animation> TowerPrefab { get => towerPrefab; private set => towerPrefab = value; }
+    [SerializeField] private Transform towerPrefab;
+    public Transform TowerPrefab { get => towerPrefab; private set => towerPrefab = value; }
+
+    [SerializeField] private AnimationClip towerAnimation;
+    public AnimationClip TowerAnimation { get => towerAnimation; private set => towerAnimation = value; }
 
     [JsonConstructor]
     public Tower(int key, string name, int damage, float attackSpeed, int sellPrice,
@@ -45,7 +51,8 @@ public class Tower : IDataKey
     public void InitailzedData()
     {
         // TODO animation load (if needed)
-        AnimationClip clip = Resources.Load<AnimationClip>($"Tower/Animation/GunPlay");
+        towerPrefab = Resources.Load<Transform>($"{TowerPrefabPath}/{Name}");
+        towerAnimation = Resources.Load<AnimationClip>($"{TowerAnimationPath}/{Name}");
     }
 }
 

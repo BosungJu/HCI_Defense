@@ -1,14 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TowerGenerator : MonoBehaviour
 {
     [Header("타워 스폰 위치들")]
-    [SerializeField] private List<Transform> spawnPoints;
+    [SerializeField] private List<TowerSector> spawnPoints;
 
-    [Header("타워 생성 규칙 (JSON → ScriptableObject)")]
+    [Header("Scriptable Objects")]
     [SerializeField] private TowerGenerateData towerRuleData;
+    [SerializeField] private TowerData towerData;
 
     private List<TowerObject> towers = new List<TowerObject>();
 
@@ -17,6 +19,8 @@ public class TowerGenerator : MonoBehaviour
 
     private void Start()
     {
+        spawnPoints = FindObjectsByType<TowerSector>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).ToList();
+
         towerRuleData.LoadData();
 
         towerRule = towerRuleData.GetTowerGenerateByKey(300);
@@ -33,8 +37,6 @@ public class TowerGenerator : MonoBehaviour
         }
     }
 
-
-
 ///
 /// <summary>
 /// 랜덤 생성
@@ -45,7 +47,7 @@ public class TowerGenerator : MonoBehaviour
 
         int ranIdx = Random.Range(0, towers.Count);
 
-        SpawnTower(spawnPoints[ranIdx].position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), ranIdx);
+        SpawnTower(spawnPoints[ranIdx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), ranIdx);
     }
 
 
@@ -96,7 +98,7 @@ public class TowerGenerator : MonoBehaviour
 
     private int FindTowerKey(TowerType type, int tier)
     {
-        Dictionary<int, Tower> towers = TowerManager.Instance.GetAllTowers();
+        Dictionary<int, Tower> towers = towerData.GetAllTowers();
 
         foreach (var kv in towers)
         {
@@ -118,7 +120,7 @@ public class TowerGenerator : MonoBehaviour
 /// <param name="towerKey">타워 키</param>
     private void SpawnTower(Vector3 position, int towerKey, int idx)
     {
-        GameObject prefab = TowerManager.Instance.GetTowerPrefab(towerKey);
+        GameObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab).gameObject;
 
         if (prefab == null)
         {

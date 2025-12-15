@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using Oculus.Interaction.Input;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class TowerObject : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class TowerObject : MonoBehaviour
     [SerializeField] private FantasyType fantasyType;
 
     public AnimationClip animation;
+    private Coroutine shootProjectile;
 
     public int TowerKey
     {
@@ -43,7 +45,7 @@ public class TowerObject : MonoBehaviour
     // --------------------------------------------------
     private void InitializeTowerData()
     {
-        Tower tower = TowerManager.Instance.GetTowerByKey(TowerKey);
+        Tower tower = TowerManager.Instance.towerData.GetTowerByKey(TowerKey);
         if (tower == null)
         {
             Debug.LogError($"Tower data not found for key: {TowerKey}");
@@ -59,7 +61,10 @@ public class TowerObject : MonoBehaviour
 
         attackTimer = 1f / attackSpeed;
 
-        StartCoroutine(ShootProjectileToMonster());
+        if (shootProjectile == null) 
+        {
+            shootProjectile = StartCoroutine(ShootProjectileToMonster());
+        }
     }
 
     // --------------------------------------------------
@@ -186,5 +191,24 @@ public class TowerObject : MonoBehaviour
 
         debugTarget = found[0];
         currentTarget = found[0];
+    }
+
+    public void TowerSelected(SelectEnterEventArgs args)
+    {
+        TowerManager.Instance.SelectTower = TowerManager.Instance.Towers.FindIndex(t => t == this);
+    }
+
+    public bool UpgradeTower(TowerObject t)
+    {
+        if (towerType == t.towerType && towerTier == t.towerTier && t.towerTier != 3)
+        {
+            TowerKey += 1;
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 [System.Serializable]
 public class Monster : IDataKey
 {
+    private const string AnimationPath = "Monster/Animation";
+
     [SerializeField] private int key;
     [JsonProperty("speed")][SerializeField] private float speed;
     [JsonProperty("health")][SerializeField] private int health;
@@ -36,8 +38,7 @@ public class Monster : IDataKey
 
     public void InitailzedData()
     {
-        // TODO animation load
-        // Resources.Load<Transform>($"MonsterPrefabs/{Name}");
+        Resources.Load<AnimationClip>($"{AnimationPath}/{Name}");
     }
 
     public override string ToString()

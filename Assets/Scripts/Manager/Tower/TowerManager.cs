@@ -3,51 +3,34 @@ using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager>
 {
-    private Dictionary<int, Tower> towerDictionary;
+    [Header("Scriptable Objects")]
+    public TowerData towerData;
 
-    [Header("Tower Prefabs")]
-    [SerializeField] private List<GameObject> towerPrefabs;
+    [Header("Towers")]
+    public List<TowerObject> Towers { get; set; } = new List<TowerObject>();
 
 
-    private void Awake()
+    [SerializeField] private int selectTower = -1;
+    public int SelectTower
     {
-        LoadTowerData();
-    }
-
-
-    private void LoadTowerData()
-    {
-        towerDictionary = DataParser.GetDataTable<Tower>(DataParser.TowerTablePath);
-
-        if (towerDictionary == null)
-            Debug.LogError("Failed to load TowerData JSON");
-    }
-
-
-    public Tower GetTowerByKey(int key)
-    {
-        if (towerDictionary.TryGetValue(key, out Tower tower))
-            return tower;
-
-        Debug.LogError($"Tower not found for key: {key}");
-        return null;
-    }
-
-
-    public GameObject GetTowerPrefab(int key)
-    {
-        if (key < 0 || key >= towerPrefabs.Count)
+        get => selectTower;
+        set
         {
-            Debug.LogError($"Tower prefab not found for key: {key}");
-            return null;
+            if (selectTower != -1)
+            {
+                if (!Towers[value].UpgradeTower(Towers[selectTower]))
+                {
+                    selectTower = value;
+                }
+                else 
+                {
+                    selectTower = -1;
+                }
+            }
+            else
+            {
+                selectTower = value;
+            }
         }
-
-        return towerPrefabs[key];
-    }
-
-
-    public Dictionary<int, Tower> GetAllTowers()
-    {
-        return towerDictionary;
     }
 }
