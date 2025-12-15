@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
         fixedYPosition = transform.position.y;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         HandleMovement();
     }

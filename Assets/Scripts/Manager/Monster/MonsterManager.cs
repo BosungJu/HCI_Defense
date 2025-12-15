@@ -7,7 +7,7 @@ public class MonsterManager : Singleton<MonsterManager>
 {
     public MonsterData monsterData;
     public MonsterWaveData monsterWaveData;
-    public Transform monsterPrefab;
+    public List<Transform> monsterPrefab;
     public Transform spawnPoint;
     public List<Transform> targetPoint;
     public float waveEndTimeInterval;
@@ -37,20 +37,17 @@ public class MonsterManager : Singleton<MonsterManager>
     private void GenerateMonster(int monsterKey)
     {
         MonsterObject monster;
+        Monster mData = monsterData.GetMonsterByKey(monsterKey);
 
-        if (monsterQueue.Count > 0)
-        {
-            monster = monsterQueue.Dequeue();
-        }
-        else
-        {
-            monster = Instantiate(monsterPrefab).GetComponent<MonsterObject>();
-        }
+        monster = Instantiate(monsterPrefab[mData.Name == "bear" ? 0 : 1]).GetComponent<MonsterObject>();
+
+        Debug.Log(mData);
 
         monster.gameObject.SetActive(true);
         monster.MoveTarget = targetPoint[0];
         monster.MonsterKey = monsterKey;
         monster.transform.position = spawnPoint.position;
+        monster.transform.parent = transform;
         Monsters.Add(monster);
     }
 
@@ -82,7 +79,9 @@ public class MonsterManager : Singleton<MonsterManager>
     private IEnumerator WaveCoroutine(int wave)
     {
         MonsterWave monsterWave = monsterWaveData.GetWaveData(wave);
-        
+
+        Debug.Log($"start wave : {monsterWave}");
+
         int idx = 0;
 
         foreach (int count in monsterWave.MonsterCounts)
@@ -118,9 +117,13 @@ public class MonsterManager : Singleton<MonsterManager>
         monsterWaveData?.LoadData();
     }
 
-    public void Awake()
+    private void Awake()
     {
         Init();
+    }
+
+    private void Start()
+    {
         CurrentWave = 1;
     }
 }

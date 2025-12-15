@@ -8,7 +8,7 @@ public static class DataParser
     public const string MonsterTablePath = "Data/MonsterData";
     public const string MonsterWaveTablePath = "Data/MonsterWaveData";
     public const string TowerTablePath = "Data/TowerData";
-    public const string TowerGenerateTablePath = "Data.TowerGenerateData";
+    public const string TowerGenerateTablePath = "Data/TowerGenerateData";
     /// <summary>
     /// T 타입의 클래스를 JSON 파일에서 읽어와 Dictionary 형태로 반환합니다.
     /// </summary>

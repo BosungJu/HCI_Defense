@@ -23,9 +23,8 @@ public class Monster : IDataKey
     public List<Animation> MonsterPrefab { get => monsterPrefab; private set => monsterPrefab = value; }
 
     [JsonConstructor]
-    public Monster(int key, float speed, int health, int damage, int reward, string name)
+    public Monster(float speed, int health, int damage, int reward, string name)
     {
-        Key = key;
         Speed = speed;
         Health = health;
         Damage = damage;
@@ -38,6 +37,11 @@ public class Monster : IDataKey
     public void InitailzedData()
     {
         // TODO animation load
-        Resources.Load<Transform>($"MonsterPrefabs/{Name}");
+        // Resources.Load<Transform>($"MonsterPrefabs/{Name}");
+    }
+
+    public override string ToString()
+    {
+        return $"Key : {Key}, Speed : {Speed}, Health : {Health}, Damage : {Damage}, Reward : {Reward}, Name : {Name}";
     }
 }
