@@ -45,6 +45,7 @@ public class Tower : IDataKey
     public void InitailzedData()
     {
         // TODO animation load (if needed)
+        AnimationClip clip = Resources.Load<AnimationClip>($"Tower/Animation/GunPlay");
     }
 }
 

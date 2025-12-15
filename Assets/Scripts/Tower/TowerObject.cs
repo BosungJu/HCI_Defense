@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using Oculus.Interaction.Input;
 using UnityEngine;
@@ -25,6 +25,8 @@ public class TowerObject : MonoBehaviour
     [SerializeField] private TowerType towerType;
     [SerializeField] private int towerTier;
     [SerializeField] private FantasyType fantasyType;
+
+    public AnimationClip animation;
 
     public int TowerKey
     {
@@ -56,22 +58,8 @@ public class TowerObject : MonoBehaviour
         fantasyType = tower.FantasyType;
 
         attackTimer = 1f / attackSpeed;
-    }
 
-
-    private void Update()
-    {
-        UpdateTarget();
-        if (currentTarget == null) return;
-
-        LookAtTarget();
-
-        attackTimer -= Time.deltaTime;
-        if (attackTimer <= 0f)
-        {
-            ShootProjectile();
-            attackTimer = 1f / attackSpeed;
-        }
+        StartCoroutine(ShootProjectileToMonster());
     }
 
     // --------------------------------------------------
@@ -110,39 +98,48 @@ public class TowerObject : MonoBehaviour
         return closest;
     }
 
-    // --------------------------------------------------
-    // 투사체 발사
-    // --------------------------------------------------
-    private void ShootProjectile()
+    private IEnumerator ShootProjectileToMonster()
     {
-        if (!projectilePrefab || !firePoint) return;
-        if (currentTarget == null) return;
-
-        GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        Projectile proj = obj.GetComponent<Projectile>();
-
-        proj.target = currentTarget;
-        proj.damage = damage;
-
-        // 🔥 판타지 타입 설정
-        if (fantasyType == FantasyType.Fire)
+        while (true) 
         {
-            proj.isAOE = true;
-            proj.isFire = true;
-            proj.aoeRadius = 2.3f;
-        }
-        else if (fantasyType == FantasyType.Ice)
-        {
-            proj.isAOE = true;
-            proj.isIce = true;
-            proj.aoeRadius = 2.3f;
-        }
+            UpdateTarget();
 
-        // 💥 RPG 타워 (Modern Tier 4)
-        if (towerType == TowerType.Modern && towerTier == 4)
-        {
-            proj.isAOE = true;
-            proj.isRPG = true;
+            if (!projectilePrefab || !firePoint || currentTarget == null) 
+            {
+                yield return new WaitForEndOfFrame();
+                continue;
+            }
+
+            LookAtTarget();
+
+            GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            Projectile proj = obj.GetComponent<Projectile>();
+
+            proj.target = currentTarget;
+            proj.damage = damage;
+
+            // 🔥 판타지 타입 설정
+            if (fantasyType == FantasyType.Fire)
+            {
+                proj.isAOE = true;
+                proj.isFire = true;
+                proj.aoeRadius = 2.3f;
+            }
+            else if (fantasyType == FantasyType.Ice)
+            {
+                proj.isAOE = true;
+                proj.isIce = true;
+                proj.aoeRadius = 2.3f;
+            }
+
+            // 💥 RPG 타워 (Modern Tier 4)
+            if (towerType == TowerType.Modern && towerTier == 4)
+            {
+                proj.isAOE = true;
+                proj.isRPG = true;
+            }
+
+            yield return new WaitForSeconds(attackSpeed);
         }
     }
 
@@ -170,7 +167,7 @@ public class TowerObject : MonoBehaviour
     // --------------------------------------------------
     // 빙의 상태에서 컨트롤러로 직접 타겟 지정
     // --------------------------------------------------
-    private void ShotMonster()
+    private void ShootMonster()
     {
         if (controller == null) return;
 
