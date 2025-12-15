@@ -12,6 +12,7 @@ public class MonsterManager : Singleton<MonsterManager>
     public List<Transform> targetPoint;
     public float waveEndTimeInterval;
     public Action waveEndEvent;
+    public Action<int> waveStartEvent;
 
     private int currentWave;
     public int CurrentWave
@@ -67,6 +68,7 @@ public class MonsterManager : Singleton<MonsterManager>
     /// <param name="interval">몬스터 생성 주기</param>
     public void StartWave()
     {
+        waveStartEvent?.Invoke(CurrentWave);
         StartCoroutine(WaveCoroutine(CurrentWave));
     }
 
