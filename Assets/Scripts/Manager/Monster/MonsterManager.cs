@@ -14,6 +14,7 @@ public class MonsterManager : Singleton<MonsterManager>
     public float waveEndTimeInterval;
     public Action waveEndEvent;
     public Action<int> waveStartEvent;
+    private Coroutine waveStartRoutine;
 
     private int currentWave;
     public int CurrentWave
@@ -70,7 +71,7 @@ public class MonsterManager : Singleton<MonsterManager>
     public void StartWave()
     {
         waveStartEvent?.Invoke(CurrentWave);
-        StartCoroutine(WaveCoroutine(CurrentWave));
+        waveStartRoutine = StartCoroutine(WaveCoroutine(CurrentWave));
     }
 
     /// <summary>
@@ -129,5 +130,14 @@ public class MonsterManager : Singleton<MonsterManager>
     private void Start()
     {
         CurrentWave = 1;
+    }
+
+    private void Update()
+    {
+        if (Monsters.Count == 0 && waveStartRoutine != null)
+        {
+            StopCoroutine(waveStartRoutine);
+            CurrentWave += 1;
+        }
     }
 }

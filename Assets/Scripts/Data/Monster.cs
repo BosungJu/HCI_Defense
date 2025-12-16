@@ -38,7 +38,7 @@ public class Monster : IDataKey
 
     public void InitailzedData()
     {
-        Resources.Load<AnimationClip>($"{AnimationPath}/{Name}");
+        Resources.Load<AnimationClip>($"{AnimationPath}/{Name}/");
     }
 
     public override string ToString()

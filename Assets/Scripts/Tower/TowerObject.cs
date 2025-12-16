@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Linq;
+using Oculus.Interaction;
 using Oculus.Interaction.Input;
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -26,9 +28,12 @@ public class TowerObject : MonoBehaviour
     [SerializeField] private TowerType towerType;
     [SerializeField] private int towerTier;
     [SerializeField] private FantasyType fantasyType;
+    [SerializeField] TMP_Text towerInfo;
 
     public string stateName;
     public Animator animator;
+    public RayInteractor leftInteractor;
+    public RayInteractor rightInteractor;
     private Coroutine shootProjectile;
 
     public int TowerKey
@@ -61,6 +66,8 @@ public class TowerObject : MonoBehaviour
         fantasyType = tower.FantasyType;
         stateName = tower.Name;
 
+        towerInfo.SetText($"Tier:{tower.TowerTier}\nType:{tower.TowerType}");
+
         attackTimer = 1f / attackSpeed;
 
         if (shootProjectile == null) 
@@ -77,7 +84,7 @@ public class TowerObject : MonoBehaviour
         if ((currentTarget != null &&
             currentTarget.gameObject.activeSelf &&
             currentTarget.Health > 0) ||
-            MonsterManager.Instance.Monsters.Count < 0)
+            MonsterManager.Instance.Monsters.Count <= 0)
         {
             return;
         }
@@ -203,9 +210,10 @@ public class TowerObject : MonoBehaviour
         currentTarget = found[0];
     }
 
-    public void TowerSelected(SelectEnterEventArgs args)
+    public void TowerSelected()
     {
         TowerManager.Instance.SelectTower = TowerManager.Instance.Towers.FindIndex(t => t == this);
+        Debug.Log("selected");
     }
 
     public bool UpgradeTower(TowerObject t)
@@ -213,7 +221,6 @@ public class TowerObject : MonoBehaviour
         if (towerType == t.towerType && towerTier == t.towerTier && t.towerTier != 3)
         {
             TowerKey += 1;
-
             return true;
         }
         else

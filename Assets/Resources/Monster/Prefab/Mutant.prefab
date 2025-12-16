@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mutant
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e6ff5c31c5aecb44e9f3681dd83e0828, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -110,3 +114,9 @@ MonoBehaviour:
   moveTarget: {fileID: 0}
   slowDuration: 0
   agent: {fileID: 8638326357949763851}
+  animator: {fileID: 7546863658438360327}
+--- !u!95 &7546863658438360327 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+  m_PrefabInstance: {fileID: 4166195976606138518}
+  m_PrefabAsset: {fileID: 0}
