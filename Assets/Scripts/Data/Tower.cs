@@ -29,9 +29,6 @@ public class Tower : IDataKey
     [SerializeField] private Transform towerPrefab;
     public Transform TowerPrefab { get => towerPrefab; private set => towerPrefab = value; }
 
-    [SerializeField] private AnimationClip towerAnimation;
-    public AnimationClip TowerAnimation { get => towerAnimation; private set => towerAnimation = value; }
-
     [JsonConstructor]
     public Tower(int key, string name, int damage, float attackSpeed, int sellPrice,
                  TowerType towerType, FantasyType fantasyType, int towerTier)
@@ -51,8 +48,7 @@ public class Tower : IDataKey
     public void InitailzedData()
     {
         // TODO animation load (if needed)
-        towerPrefab = Resources.Load<Transform>($"{TowerPrefabPath}/{Name}");
-        towerAnimation = Resources.Load<AnimationClip>($"{TowerAnimationPath}/{Name}");
+        towerPrefab = Resources.Load<Transform>($"{TowerPrefabPath}/Tower");
     }
 }
 

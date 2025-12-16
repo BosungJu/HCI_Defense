@@ -9,14 +9,13 @@ public class TowerManager : Singleton<TowerManager>
     [Header("Towers")]
     public List<TowerObject> Towers { get; set; } = new List<TowerObject>();
 
-
     [SerializeField] private int selectTower = -1;
     public int SelectTower
     {
         get => selectTower;
         set
         {
-            if (selectTower != -1)
+            if (selectTower != -1 && selectTower != value)
             {
                 if (!Towers[value].UpgradeTower(Towers[selectTower]))
                 {
@@ -24,6 +23,8 @@ public class TowerManager : Singleton<TowerManager>
                 }
                 else 
                 {
+                    Destroy(Towers[selectTower].gameObject);
+                    Towers[selectTower] = null;
                     selectTower = -1;
                 }
             }

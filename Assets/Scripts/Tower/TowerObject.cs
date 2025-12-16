@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Linq;
+using Oculus.Interaction;
 using Oculus.Interaction.Input;
+using TMPro;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -9,8 +12,7 @@ public class TowerObject : MonoBehaviour
     private int towerKey;
     private float attackTimer;
 
-    private MonsterObject currentTarget;
-    [SerializeField] private MonsterObject debugTarget; // Debug 보기용
+    [SerializeField] private MonsterObject currentTarget;
 
     [Header("Possession Controller")]
     public Controller controller;
@@ -26,8 +28,12 @@ public class TowerObject : MonoBehaviour
     [SerializeField] private TowerType towerType;
     [SerializeField] private int towerTier;
     [SerializeField] private FantasyType fantasyType;
+    [SerializeField] TMP_Text towerInfo;
 
-    public AnimationClip animation;
+    public string stateName;
+    public Animator animator;
+    public RayInteractor leftInteractor;
+    public RayInteractor rightInteractor;
     private Coroutine shootProjectile;
 
     public int TowerKey
@@ -58,6 +64,9 @@ public class TowerObject : MonoBehaviour
         towerType = tower.TowerType;
         towerTier = tower.TowerTier;
         fantasyType = tower.FantasyType;
+        stateName = tower.Name;
+
+        towerInfo.SetText($"Tier:{tower.TowerTier}\nType:{tower.TowerType}");
 
         attackTimer = 1f / attackSpeed;
 
@@ -72,9 +81,10 @@ public class TowerObject : MonoBehaviour
     // --------------------------------------------------
     private void UpdateTarget()
     {
-        if (currentTarget != null &&
+        if ((currentTarget != null &&
             currentTarget.gameObject.activeSelf &&
-            currentTarget.Health > 0)
+            currentTarget.Health > 0) ||
+            MonsterManager.Instance.Monsters.Count <= 0)
         {
             return;
         }
@@ -85,6 +95,11 @@ public class TowerObject : MonoBehaviour
 
     private MonsterObject FindClosestMonster()
     {
+        if (MonsterManager.Instance.Monsters.Count == 0)
+        {
+            return null;
+        }
+
         float closestDist = Vector3.Distance(transform.position, MonsterManager.Instance.Monsters[0].transform.position);
         MonsterObject closest = MonsterManager.Instance.Monsters[0];
 
@@ -115,6 +130,8 @@ public class TowerObject : MonoBehaviour
                 continue;
             }
 
+            firePoint = currentTarget.transform;
+
             LookAtTarget();
 
             GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
@@ -144,6 +161,7 @@ public class TowerObject : MonoBehaviour
                 proj.isRPG = true;
             }
 
+            animator.Play(stateName);
             yield return new WaitForSeconds(attackSpeed);
         }
     }
@@ -189,13 +207,13 @@ public class TowerObject : MonoBehaviour
 
         if (found.Count == 0) return;
 
-        debugTarget = found[0];
         currentTarget = found[0];
     }
 
-    public void TowerSelected(SelectEnterEventArgs args)
+    public void TowerSelected()
     {
         TowerManager.Instance.SelectTower = TowerManager.Instance.Towers.FindIndex(t => t == this);
+        Debug.Log("selected");
     }
 
     public bool UpgradeTower(TowerObject t)
@@ -203,7 +221,6 @@ public class TowerObject : MonoBehaviour
         if (towerType == t.towerType && towerTier == t.towerTier && t.towerTier != 3)
         {
             TowerKey += 1;
-
             return true;
         }
         else

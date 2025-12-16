@@ -36,6 +36,7 @@ public class MonsterObject : MonoBehaviour
     public float SlowDuration => slowDuration;
 
     public NavMeshAgent agent;
+    public Animator animator;
 
     private void SetMonsterData()
     {
@@ -49,9 +50,11 @@ public class MonsterObject : MonoBehaviour
             reward = monster.Reward;
             monsterName = monster.Name;
 
+            animator.Play("Walk");
+
             agent.Warp(MonsterManager.Instance.targetPoint[0].position);
             agent.stoppingDistance = 1f;
-            agent.speed = speed * 5;
+            agent.speed = speed;
             agent.SetDestination(MoveTarget.position);
 
             StartCoroutine(BurnMonster());
@@ -90,19 +93,27 @@ public class MonsterObject : MonoBehaviour
 
         if (health <= 0)
         {
-            DieMonster();
+            StartCoroutine(DieMonster());
         }
     }
 
     /// <summary>
     /// 몬스터가 죽을 때.
     /// </summary>
-    private void DieMonster()
+    private IEnumerator DieMonster()
     {
         // TODO 플레이어에게 돈 지급.
-        gameObject.SetActive(false);
+        if (agent.enabled)
+        {
+            agent.SetDestination(transform.position);
+        }
+        animator.Play("Death");
+
         MonsterManager.Instance.Monsters.Remove(this);
-        MonsterManager.Instance.EnqueueMonster(this);
+
+        yield return new WaitForSeconds(2);
+        
+        Destroy(gameObject);
     }
 
     private void Update() 
@@ -120,13 +131,14 @@ public class MonsterObject : MonoBehaviour
 
     private IEnumerator BurnMonster()
     {
-        float elapsed = 0f;
-
         while (true)
         {
             int maxDamage = 0;
+            List<int> deleteKey = new List<int>();
 
-            foreach (var burn in burnDamage)
+            Dictionary<int, float> tempBurnDamage = new Dictionary<int, float>(burnDamage);
+
+            foreach (var burn in tempBurnDamage)
             {
                 if (burn.Value > 0)
                 {
@@ -135,16 +147,25 @@ public class MonsterObject : MonoBehaviour
                         maxDamage = burn.Key;
                     }
 
-                    burnDamage[burn.Key] -= 1f;
+                    if (burnDamage.ContainsKey(burn.Key))
+                    {
+                        burnDamage[burn.Key] -= 1f;
+                    }
                 }
                 else
                 {
-                    burnDamage.Remove(burn.Key);
+                    deleteKey.Add(burn.Key);
                 }
             }
 
+            foreach (int k in deleteKey)
+            {
+                burnDamage.Remove(k);
+            }
+
+            DamagedMonster(maxDamage);
+
             yield return new WaitForSeconds(1f);
-            elapsed += 1f;
         }
     }
 

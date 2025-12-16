@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.XR.Interaction.Toolkit;
 
 public class TowerGenerator : MonoBehaviour
 {
@@ -12,13 +11,14 @@ public class TowerGenerator : MonoBehaviour
     [SerializeField] private TowerGenerateData towerRuleData;
     [SerializeField] private TowerData towerData;
 
-    private List<TowerObject> towers = new List<TowerObject>();
-
     private TowerGenerate towerRule;
 
 
     private void Start()
     {
+        towerRuleData.LoadData();
+        towerData.LoadData();
+
         spawnPoints = FindObjectsByType<TowerSector>(FindObjectsInactive.Include, FindObjectsSortMode.InstanceID).ToList();
 
         towerRuleData.LoadData();
@@ -33,7 +33,7 @@ public class TowerGenerator : MonoBehaviour
 
         for (int i = 0; i < spawnPoints.Count; ++i)
         {
-            towers.Add(null);
+            TowerManager.Instance.Towers.Add(null);
         }
     }
 
@@ -41,13 +41,14 @@ public class TowerGenerator : MonoBehaviour
 /// <summary>
 /// 랜덤 생성
 /// </summary>
-    public void GenerateTowers()
+    public void GenerateTower()
     {
-        List<TowerObject> towers = this.towers.Where(t => t != null).ToList();
-
-        int ranIdx = Random.Range(0, towers.Count);
-
-        SpawnTower(spawnPoints[ranIdx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), ranIdx);
+        Debug.Log($"towers null count : {TowerManager.Instance.Towers.Count(t => t == null)}");
+        if (TowerManager.Instance.Towers.Count(t => t == null) > 0)
+        {
+            int idx = TowerManager.Instance.Towers.FindIndex(t => t == null);
+            SpawnTower(spawnPoints[idx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), idx);
+        }
     }
 
 
@@ -120,7 +121,7 @@ public class TowerGenerator : MonoBehaviour
 /// <param name="towerKey">타워 키</param>
     private void SpawnTower(Vector3 position, int towerKey, int idx)
     {
-        GameObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab).gameObject;
+        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, transform).GetComponent<TowerObject>();
 
         if (prefab == null)
         {
@@ -128,11 +129,9 @@ public class TowerGenerator : MonoBehaviour
             return;
         }
 
-        GameObject go = Instantiate(prefab, position, Quaternion.identity);
+        prefab.TowerKey = towerKey;
+        prefab.transform.position = new Vector3(position.x, prefab.transform.lossyScale.y, position.z);
 
-        TowerObject towerObj = go.GetComponent<TowerObject>();
-        towerObj.TowerKey = towerKey;
-
-        towers[idx] = towerObj;
+        TowerManager.Instance.Towers[idx] = prefab;
     }
 }
