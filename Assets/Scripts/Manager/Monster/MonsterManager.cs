@@ -84,6 +84,11 @@ public class MonsterManager : Singleton<MonsterManager>
     {
         MonsterWave monsterWave = monsterWaveData.GetWaveData(wave);
 
+        if (monsterWave == null)
+        {
+            // TODO end.
+        }
+
         Debug.Log($"start wave : {monsterWave}");
 
         int idx = 0;
