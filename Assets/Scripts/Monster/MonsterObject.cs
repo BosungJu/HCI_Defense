@@ -112,6 +112,8 @@ public class MonsterObject : MonoBehaviour
         MonsterManager.Instance.Monsters.Remove(this);
 
         yield return new WaitForSeconds(2);
+
+        TowerManager.Instance.Gold += Reward;
         
         Destroy(gameObject);
     }
@@ -183,6 +185,14 @@ public class MonsterObject : MonoBehaviour
             }
 
             yield return new WaitForEndOfFrame();
+        }
+    }
+
+    public void SelectToTower()
+    {
+        if (RigManager.Instance.possessionTower != null)
+        {
+            RigManager.Instance.possessionTower.UpdateTargetOnPossession(this);
         }
     }
 }

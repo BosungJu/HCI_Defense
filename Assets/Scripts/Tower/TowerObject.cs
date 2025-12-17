@@ -184,30 +184,16 @@ public class TowerObject : MonoBehaviour
     // --------------------------------------------------
     public void Possession()
     {
-        // TODO: 1인칭 조준, 카메라 전환 등
+        RigManager.Instance.SetTowerPos(this);
     }
 
-    // --------------------------------------------------
-    // 빙의 상태에서 컨트롤러로 직접 타겟 지정
-    // --------------------------------------------------
-    private void ShootMonster()
+    /// <summary>
+    /// 빙의 중에 상대 지정.
+    /// </summary>
+    /// <param name="m"></param>
+    public void UpdateTargetOnPossession(MonsterObject m)
     {
-        if (controller == null) return;
-
-        RaycastHit[] hits = Physics.RaycastAll(
-            controller.transform.position,
-            controller.transform.forward,
-            100f
-        );
-
-        var found = hits
-            .Where(h => h.collider.TryGetComponent(out MonsterObject _))
-            .Select(h => h.collider.GetComponent<MonsterObject>())
-            .ToList();
-
-        if (found.Count == 0) return;
-
-        currentTarget = found[0];
+        currentTarget = m;
     }
 
     public void TowerSelected()
@@ -227,5 +213,10 @@ public class TowerObject : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void TowerOutlineOnOff(bool isOn)
+    {
+        // TODO outline. or 표시.
     }
 }

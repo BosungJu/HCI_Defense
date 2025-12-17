@@ -43,11 +43,14 @@ public class TowerGenerator : MonoBehaviour
 /// </summary>
     public void GenerateTower()
     {
-        Debug.Log($"towers null count : {TowerManager.Instance.Towers.Count(t => t == null)}");
-        if (TowerManager.Instance.Towers.Count(t => t == null) > 0)
+        if (TowerManager.Instance.Gold - TowerManager.towerGenerateGold >= 0) 
         {
-            int idx = TowerManager.Instance.Towers.FindIndex(t => t == null);
-            SpawnTower(spawnPoints[idx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), idx);
+            if (TowerManager.Instance.Towers.Count(t => t == null) > 0)
+            {
+                int idx = TowerManager.Instance.Towers.FindIndex(t => t == null);
+                SpawnTower(spawnPoints[idx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), idx);
+                TowerManager.Instance.Gold -= TowerManager.towerGenerateGold;
+            }
         }
     }
 
