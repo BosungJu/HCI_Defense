@@ -23311,7 +23311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 382915703}
-  _controllerButtonUsage: 32
+  _controllerButtonUsage: 16
 --- !u!114 &1293122286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23325,7 +23325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 382915704}
-  _controllerButtonUsage: 32
+  _controllerButtonUsage: 16
 --- !u!114 &1293122287
 MonoBehaviour:
   m_ObjectHideFlags: 0
