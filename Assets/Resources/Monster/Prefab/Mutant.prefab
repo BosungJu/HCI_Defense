@@ -66,6 +66,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3623128898581890128}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4465577557760629719}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5965070255402715641}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 266054321946851390}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -5619772490551846600}
   m_SourcePrefab: {fileID: 100100000, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
 --- !u!1 &3823596745003662791 stripped
 GameObject:
@@ -115,6 +127,110 @@ MonoBehaviour:
   slowDuration: 0
   agent: {fileID: 8638326357949763851}
   animator: {fileID: 7546863658438360327}
+--- !u!114 &-4465577557760629719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823596745003662791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb86ba9d4c5126e48bfef9b0c9550e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactorFilters: []
+  _maxInteractors: -1
+  _maxSelectingInteractors: -1
+  _data: {fileID: 0}
+  _pointableElement: {fileID: 0}
+  _surface: {fileID: 5965070255402715641}
+  _selectSurface: {fileID: 0}
+  _movementProvider: {fileID: 0}
+  _tiebreakerScore: 0
+--- !u!114 &5965070255402715641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823596745003662791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2140d2b457bea84881488302059889b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 266054321946851390}
+--- !u!65 &266054321946851390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823596745003662791}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-5619772490551846600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823596745003662791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 0}
+  _whenHover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenUnhover:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3623128898581890128}
+        m_TargetAssemblyTypeName: MonsterObject, Assembly-CSharp
+        m_MethodName: SelectToTower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselect:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewAdded:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenSelectingInteractorViewRemoved:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!95 &7546863658438360327 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}

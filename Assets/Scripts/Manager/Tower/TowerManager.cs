@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TowerManager : Singleton<TowerManager>
@@ -8,6 +9,22 @@ public class TowerManager : Singleton<TowerManager>
 
     [Header("Towers")]
     public List<TowerObject> Towers { get; set; } = new List<TowerObject>();
+
+    [Header("Gold UI")]
+    public TMP_Text goldText;
+
+    [SerializeField] private int gold = 30;
+    public int Gold
+    {
+        get => gold;
+        set
+        {
+            gold = value;
+
+            goldText.SetText($"Gold: {gold}");
+        }
+    }
+    public const int towerGenerateGold = 10;
 
     [SerializeField] private int selectTower = -1;
     public int SelectTower
@@ -31,6 +48,14 @@ public class TowerManager : Singleton<TowerManager>
             else
             {
                 selectTower = value;
+            }
+
+            foreach (TowerObject t in Towers)
+            {
+                if (selectTower != -1)
+                {
+                    t.TowerOutlineOnOff(t == Towers[selectTower]);
+                }
             }
         }
     }
