@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -42,26 +43,6 @@ public class Projectile : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        if (target == null || !target.gameObject.activeSelf)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        // 타겟 방향
-        Vector3 dir = (target.transform.position - transform.position).normalized;
-        transform.position += dir * speed * Time.deltaTime;
-
-        // 명중 판정
-        if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
-        {
-            OnHit();
-        }
-    }
-
-
     private void OnHit()
     {
         // 이펙트 재생
@@ -85,7 +66,37 @@ public class Projectile : MonoBehaviour
             ApplyAOE();
         }
 
+        StopCoroutine("ShootMonster");
         Destroy(gameObject);
+    }
+
+    public void StartShootMonster()
+    {
+        StartCoroutine("ShootMonster");
+    }
+
+    private IEnumerator ShootMonster()
+    {
+        while (true)
+        {
+            if (target == null || !target.gameObject.activeSelf)
+            {
+                StopCoroutine("ShootMonster");
+                Destroy(gameObject);
+            }
+
+            // 타겟 방향
+            Vector3 dir = (target.transform.position - transform.position).normalized;
+            transform.position += dir * speed * Time.deltaTime;
+
+            // 명중 판정
+            if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
+            {
+                OnHit();
+            }
+
+            yield return new WaitForFixedUpdate();
+        }
     }
 
 
