@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TreeEditor;
 using UnityEngine;
 
 public class TowerGenerator : MonoBehaviour
@@ -13,6 +14,7 @@ public class TowerGenerator : MonoBehaviour
 
     private TowerGenerate towerRule;
 
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -120,11 +122,11 @@ public class TowerGenerator : MonoBehaviour
 /// <summary>
 /// 타워 생성
 /// </summary>
-/// <param name="position">생성 위치</param>
+/// <param name="spawnPoint">생성 바닥</param>
 /// <param name="towerKey">타워 키</param>
-    private void SpawnTower(Transform parent, int towerKey, int idx)
+    private void SpawnTower(Transform spawnPoint, int towerKey, int idx)
     {
-        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, parent).GetComponent<TowerObject>();
+        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, transform).GetComponent<TowerObject>();
 
         if (prefab == null)
         {
@@ -133,9 +135,11 @@ public class TowerGenerator : MonoBehaviour
         }
 
         prefab.TowerKey = towerKey;
-        prefab.transform.position = new Vector3(0, prefab.transform.lossyScale.y, 0);
+        prefab.transform.position = new Vector3(spawnPoint.position.x, prefab.transform.lossyScale.y, spawnPoint.position.z);
 
 
         TowerManager.Instance.Towers[idx] = prefab;
+
+        audioSource.Play();
     }
 }

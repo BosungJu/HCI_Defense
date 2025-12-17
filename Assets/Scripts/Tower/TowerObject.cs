@@ -29,6 +29,7 @@ public class TowerObject : MonoBehaviour
     [SerializeField] private int towerTier;
     [SerializeField] private FantasyType fantasyType;
     [SerializeField] TMP_Text towerInfo;
+    [SerializeField] AudioClip shootSound;
 
     public string stateName;
     public Animator animator;
@@ -65,6 +66,7 @@ public class TowerObject : MonoBehaviour
         towerTier = tower.TowerTier;
         fantasyType = tower.FantasyType;
         stateName = tower.Name;
+        shootSound = tower.ShootSound;
 
         towerInfo.SetText($"Tier:{tower.TowerTier}\nType:{tower.TowerType}\nFantasy Type:{tower.FantasyType}");
 
@@ -134,7 +136,14 @@ public class TowerObject : MonoBehaviour
 
             LookAtTarget();
 
-            GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+            float animDuration = towerType == TowerType.Fantasy ? 1.033f : towerType == TowerType.Medieval ? 1.033f : 0.567f;
+
+            animator.speed = animDuration / 0.6f; // 0.5초 애니메이션
+            animator.Play(stateName);
+
+            yield return new WaitForSeconds(0.6f);
+
+            GameObject obj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity, transform);
             Projectile proj = obj.GetComponent<Projectile>();
 
             proj.target = currentTarget;
@@ -162,8 +171,9 @@ public class TowerObject : MonoBehaviour
             }
 
             proj.StartShootMonster();
-            animator.Play(stateName);
-            yield return new WaitForSeconds(attackSpeed);
+            TowerManager.Instance.audioSource.PlayOneShot(shootSound);
+            
+            yield return new WaitForSeconds(attackSpeed - 0.6f);
         }
     }
 
@@ -223,5 +233,11 @@ public class TowerObject : MonoBehaviour
     public void TowerOutlineOnOff(bool isOn)
     {
         // TODO outline. or 표시.
+    }
+
+    void FixedUpdate()
+    {
+        transform.GetChild(0).transform.localPosition = Vector3.zero;
+        transform.GetChild(0).localEulerAngles = new Vector3(0, towerType == TowerType.Medieval ? 90 : towerType == TowerType.Modern ? 15 : 90, 0);
     }
 }

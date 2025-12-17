@@ -8,10 +8,12 @@ public class TowerManager : Singleton<TowerManager>
     public TowerData towerData;
 
     [Header("Towers")]
-    public List<TowerObject> Towers { get; set; } = new List<TowerObject>();
+    [SerializeField] private List<TowerObject> towers = new List<TowerObject>();
+    public List<TowerObject> Towers { get => towers; private set => towers = value; }
 
     [Header("Gold UI")]
     public TMP_Text goldText;
+    public AudioSource audioSource;
 
     public TowerObject PossessionTowerObject
     {
@@ -63,7 +65,7 @@ public class TowerManager : Singleton<TowerManager>
 
             foreach (TowerObject t in Towers)
             {
-                if (selectTower != -1)
+                if (selectTower != -1 && t != null)
                 {
                     t.TowerOutlineOnOff(t == Towers[selectTower]);
                 }
@@ -78,6 +80,7 @@ public class TowerManager : Singleton<TowerManager>
             Towers[selectTower].Possession();
             PossessionTowerObject = Towers[selectTower];
             selectTower = -1;
+            Debug.Log($"possession {PossessionTowerObject.name}");
         }
     }
 
@@ -88,6 +91,7 @@ public class TowerManager : Singleton<TowerManager>
             PossessionTowerObject.OutPossession();
             PossessionTowerObject = null;
             selectTower = -1;
+            Debug.Log($"out possession {PossessionTowerObject.name}");
         }
     }
 }

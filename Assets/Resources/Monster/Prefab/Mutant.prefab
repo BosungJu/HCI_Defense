@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 1b52faf81f4cefe43ae8fa9b9ca8c7e6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -127,6 +139,7 @@ MonoBehaviour:
   slowDuration: 0
   agent: {fileID: 8638326357949763851}
   animator: {fileID: 7546863658438360327}
+  deathSound: {fileID: 8300000, guid: 1e53a9bf60701114d920c82ec9c0c11b, type: 3}
 --- !u!114 &-4465577557760629719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableView: {fileID: 0}
+  _interactableView: {fileID: -4465577557760629719}
   _whenHover:
     m_PersistentCalls:
       m_Calls: []
