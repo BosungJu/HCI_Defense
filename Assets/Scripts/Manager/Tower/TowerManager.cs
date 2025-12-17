@@ -13,7 +13,11 @@ public class TowerManager : Singleton<TowerManager>
     [Header("Gold UI")]
     public TMP_Text goldText;
 
-    private bool isPossession = false;
+    public TowerObject PossessionTowerObject
+    {
+        get;
+        private set;
+    }
 
     [SerializeField] private int gold = 30;
     public int Gold
@@ -34,11 +38,11 @@ public class TowerManager : Singleton<TowerManager>
         get => selectTower;
         set
         {
-            if (isPossession)
+            if (PossessionTowerObject != null)
             {
                 return;
             }
-            
+
             if (selectTower != -1 && selectTower != value)
             {
                 if (!Towers[value].UpgradeTower(Towers[selectTower]))
@@ -69,11 +73,21 @@ public class TowerManager : Singleton<TowerManager>
 
     public void PossessionTower()
     {
-        if (selectTower != -1 && !isPossession)
+        if (selectTower != -1 && PossessionTowerObject == null)
         {
             Towers[selectTower].Possession();
+            PossessionTowerObject = Towers[selectTower];
             selectTower = -1;
-            isPossession = true;
+        }
+    }
+
+    public void OutPossessionTower()
+    {
+        if (PossessionTowerObject != null)
+        {
+            PossessionTowerObject.OutPossession();
+            PossessionTowerObject = null;
+            selectTower = -1;
         }
     }
 }
