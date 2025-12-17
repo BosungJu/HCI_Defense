@@ -66,7 +66,7 @@ public class TowerObject : MonoBehaviour
         fantasyType = tower.FantasyType;
         stateName = tower.Name;
 
-        towerInfo.SetText($"Tier:{tower.TowerTier}\nType:{tower.TowerType}");
+        towerInfo.SetText($"Tier:{tower.TowerTier}\nType:{tower.TowerType}\nFantasy Type:{tower.FantasyType}");
 
         attackTimer = 1f / attackSpeed;
 
@@ -161,6 +161,7 @@ public class TowerObject : MonoBehaviour
                 proj.isRPG = true;
             }
 
+            proj.StartShootMonster();
             animator.Play(stateName);
             yield return new WaitForSeconds(attackSpeed);
         }
@@ -199,7 +200,6 @@ public class TowerObject : MonoBehaviour
     public void TowerSelected()
     {
         TowerManager.Instance.SelectTower = TowerManager.Instance.Towers.FindIndex(t => t == this);
-        Debug.Log("selected");
     }
 
     public bool UpgradeTower(TowerObject t)

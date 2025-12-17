@@ -48,7 +48,7 @@ public class TowerGenerator : MonoBehaviour
             if (TowerManager.Instance.Towers.Count(t => t == null) > 0)
             {
                 int idx = TowerManager.Instance.Towers.FindIndex(t => t == null);
-                SpawnTower(spawnPoints[idx].transform.position, FindTowerKey(GetRandomTowerType(), GetRandomTier()), idx);
+                SpawnTower(spawnPoints[idx].transform, FindTowerKey(GetRandomTowerType(), GetRandomTier()), idx);
                 TowerManager.Instance.Gold -= TowerManager.towerGenerateGold;
             }
         }
@@ -122,9 +122,9 @@ public class TowerGenerator : MonoBehaviour
 /// </summary>
 /// <param name="position">생성 위치</param>
 /// <param name="towerKey">타워 키</param>
-    private void SpawnTower(Vector3 position, int towerKey, int idx)
+    private void SpawnTower(Transform parent, int towerKey, int idx)
     {
-        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, transform).GetComponent<TowerObject>();
+        TowerObject prefab = Instantiate(towerData.GetTowerByKey(towerKey).TowerPrefab, parent).GetComponent<TowerObject>();
 
         if (prefab == null)
         {
@@ -133,7 +133,8 @@ public class TowerGenerator : MonoBehaviour
         }
 
         prefab.TowerKey = towerKey;
-        prefab.transform.position = new Vector3(position.x, prefab.transform.lossyScale.y, position.z);
+        prefab.transform.position = new Vector3(0, prefab.transform.lossyScale.y, 0);
+
 
         TowerManager.Instance.Towers[idx] = prefab;
     }
