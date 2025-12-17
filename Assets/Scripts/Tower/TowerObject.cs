@@ -188,6 +188,11 @@ public class TowerObject : MonoBehaviour
         RigManager.Instance.SetTowerPos(this);
     }
 
+    public void OutPossession()
+    {
+        RigManager.Instance.SetOriginPos();
+    }
+
     /// <summary>
     /// 빙의 중에 상대 지정.
     /// </summary>
