@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,9 @@ public class MonsterManager : Singleton<MonsterManager>
     public Action waveEndEvent;
     public Action<int> waveStartEvent;
     private Coroutine waveStartRoutine;
+    public TMP_Text roundText;
+
+    public AudioSource audioSource;
 
     private int currentWave;
     public int CurrentWave
@@ -23,6 +27,9 @@ public class MonsterManager : Singleton<MonsterManager>
         set
         {
             currentWave = value;
+            roundText.gameObject.SetActive(true);
+            roundText.SetText($"Round {value} Start");
+            StartCoroutine(RoundTextAutoOff());
             StartWave();
         }
     }
@@ -32,6 +39,13 @@ public class MonsterManager : Singleton<MonsterManager>
     /// </summary>
     // private Queue<MonsterObject> monsterQueue = new Queue<MonsterObject>();
     public List<MonsterObject> Monsters;
+
+    private IEnumerator RoundTextAutoOff()
+    {
+        yield return new WaitForSeconds(5);
+
+        roundText.gameObject.SetActive(false);
+    }
 
     /// <summary>
     /// 오브젝트 풀에서 가져오거나 생성합니다.

@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     public MonsterObject target;
 
     [Header("Stats")]
-    public float speed = 20f;
+    public float speed;
     public int damage;
     public bool isAOE = false;
     public float aoeRadius = 0f;
@@ -87,10 +87,11 @@ public class Projectile : MonoBehaviour
 
             // 타겟 방향
             Vector3 dir = (target.transform.position - transform.position).normalized;
+            transform.LookAt(target.transform);
             transform.position += dir * speed * Time.deltaTime;
 
             // 명중 판정
-            if (Vector3.Distance(transform.position, target.transform.position) < 0.3f)
+            if (Vector3.Distance(transform.position, target.transform.position) < 0.08f)
             {
                 OnHit();
             }

@@ -7,6 +7,7 @@ public class Tower : IDataKey
 {
     private const string TowerPrefabPath = "Tower/Prefab";
     private const string TowerAnimationPath = "Tower/Animation";
+    private const string TowerSoundPath = "Sound";
 
     [SerializeField] private int key;
     [JsonProperty("name")]        [SerializeField] private string name;
@@ -28,6 +29,8 @@ public class Tower : IDataKey
 
     [SerializeField] private Transform towerPrefab;
     public Transform TowerPrefab { get => towerPrefab; private set => towerPrefab = value; }
+    [SerializeField] private AudioClip shootSound;
+    public AudioClip ShootSound => shootSound;
 
     [JsonConstructor]
     public Tower(int key, string name, int damage, float attackSpeed, int sellPrice,
@@ -49,6 +52,7 @@ public class Tower : IDataKey
     {
         // TODO animation load (if needed)
         towerPrefab = Resources.Load<Transform>($"{TowerPrefabPath}/Tower");
+        shootSound = Resources.Load<AudioClip>($"{TowerSoundPath}/{(towerType == TowerType.Fantasy ? "Magic" : towerType == TowerType.Modern ? "Gun" : "Bow")}Sound");
     }
 }
 

@@ -579,7 +579,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6005139744528426076}
@@ -651,6 +651,7 @@ MonoBehaviour:
   slowDuration: 0
   agent: {fileID: 6633744388286779077}
   animator: {fileID: 8869962818903947907}
+  deathSound: {fileID: 8300000, guid: 1e53a9bf60701114d920c82ec9c0c11b, type: 3}
 --- !u!114 &-6790565994954397001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,7 +669,7 @@ MonoBehaviour:
   _maxSelectingInteractors: -1
   _data: {fileID: 0}
   _pointableElement: {fileID: 0}
-  _surface: {fileID: 0}
+  _surface: {fileID: 2142049791424931617}
   _selectSurface: {fileID: 0}
   _movementProvider: {fileID: 0}
   _tiebreakerScore: 0
@@ -718,7 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1464721f2283eb14e94a33e812b47be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactableView: {fileID: 0}
+  _interactableView: {fileID: -6790565994954397001}
   _whenHover:
     m_PersistentCalls:
       m_Calls: []

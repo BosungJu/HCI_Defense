@@ -3,49 +3,49 @@
         "speed": 1,
         "health": 150,
         "damage": 5,
-        "reward": 5,
+        "reward": 1,
         "name": "mutant"
     },
     "2" : {
         "speed": 2,
         "health": 100,
         "damage": 10,
-        "reward": 10,
+        "reward": 3,
         "name": "bear"
     },
     "3" : {
         "speed": 1,
         "health": 300,
         "damage": 15,
-        "reward": 15,
+        "reward": 4,
         "name": "mutant"
     },
     "4" : {
         "speed": 2,
         "health": 200,
         "damage": 10,
-        "reward": 20,
+        "reward": 5,
         "name": "bear"
     },
     "5" : {
         "speed": 1,
         "health": 500,
         "damage": 15,
-        "reward": 25,
+        "reward": 8,
         "name": "mutant"
     },
     "6" : {
         "speed": 2,
         "health": 350,
         "damage": 10,
-        "reward": 30,
+        "reward": 10,
         "name": "bear"
     },
     "10": {
         "speed": 1,
         "health": 3500,
         "damage": 100,
-        "reward": 120,
+        "reward": 100,
         "name": "bear"
     },
     "11": {

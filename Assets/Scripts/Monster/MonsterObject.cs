@@ -37,6 +37,7 @@ public class MonsterObject : MonoBehaviour
 
     public NavMeshAgent agent;
     public Animator animator;
+    public AudioClip deathSound;
 
     private void SetMonsterData()
     {
@@ -108,6 +109,8 @@ public class MonsterObject : MonoBehaviour
             agent.SetDestination(transform.position);
         }
         animator.Play("Death");
+
+        MonsterManager.Instance.audioSource.PlayOneShot(deathSound);
 
         MonsterManager.Instance.Monsters.Remove(this);
 
